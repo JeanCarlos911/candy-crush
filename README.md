@@ -1,2 +1,3 @@
-### Candy Crush POO
+# proyectPOO
 
+# Candy Crush por consola

@@ -1,8 +1,3 @@
-
-/*
-    Este programa tiene el propósito de emular el juego Candy Crush por consola
-*/
-
 //propuestas simbolos dulces ★ ☆ ✮ ✯ ✦ ✧ ☀ ♢ ๑ ★ ☆ ▣ ▤ ▥ ▦ ▩ ☼ ⊙ ◎ ◁ ▷ ✙ ☸ ◈ ◇ ✠ ✡ ✢ ✣ ✤ ✥ ✦ ✧ ★ ✩ ✪ ✫
 //                           ✬ ✭ ✮ ✯ ✰ ✱ ✲ ✳ ✴ ✶ ✷ ✸ ✹ ✺ ✻ ✼ ✽ ✾ ❀ ❁ ❂ ❃ ❄ ❅ ❆ ❇ ❈ ❉ ❊ ❋
 

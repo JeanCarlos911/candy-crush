@@ -17,11 +17,10 @@ public class Tablero {
         return matriz[fila][columna];
     }
 
-    public void generarTablero()
-    {
+    public void generarTablero(){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
-                this.setDulce(i, j, new Dulce());          
+                this.setDulce(i, j, new Dulce(Dulce.formaRamdon()));          
             }
         }
     }
@@ -40,7 +39,7 @@ public class Tablero {
         for(int i = 0; i < 8; i++){
             for(int j = 0; i < 8; j++){
                 if(this.getDulce(i, j) == null){
-                    this.setDulce(i, j,new Dulce());
+                    this.setDulce(i, j,new Dulce(Dulce.formaRamdon()));
                 } 
             }
         }

@@ -15,6 +15,12 @@ public class Nivel {
     }
 
 //Metodos propios del Nivel-----------------------------------------------
+    
+    //metods setters y getters
+    public String getNombre(){
+        return this.nombre;
+    }
+    
     /**
      * Este metodo por ahora solo cambia de nivel segun la puntuacion dada y
      * devuelve un boolean que envia si hubo cambio de nivel (true) o no (false);

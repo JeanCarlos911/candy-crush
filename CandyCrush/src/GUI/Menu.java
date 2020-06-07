@@ -33,7 +33,7 @@ public class Menu {
             System.exit(0);
             
         }else{
-            System.out.println(linea + "opcion no vàlida");
+            System.out.println(linea + "\nopcion no vàlida");
             this.iniciar();
         }
     }

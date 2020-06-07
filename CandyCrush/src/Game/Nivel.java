@@ -20,6 +20,12 @@ public class Nivel {
      * devuelve un boolean que envia si hubo cambio de nivel (true) o no (false);
      * @param puntuacion long puntuacion actual@
      */
+
+    public String getNombre()
+    {
+        return this.nombre;
+    }
+
     public boolean pasarNivel(long puntuacion){
         if(puntuacion>=puntuacionObjetivo){
             nivel+=1;

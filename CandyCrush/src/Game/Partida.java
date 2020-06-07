@@ -1,7 +1,6 @@
 package Game;
 
 import GUI.Menu;
-import java.util.Scanner;
 
 public class Partida {
     //Atributos
@@ -13,18 +12,14 @@ public class Partida {
     /**
      * crea y establece valores iniciales para tablero, jugador y puntuacionAcumulada
      */
-    public Partida(){
-        //inicializar scanner para su posterior uso
-        Scanner in = new Scanner(System.in);
-        
+    public Partida(String nombre){
         //tablero
         tablero = new Tablero();
         tablero.generarTablero();
         
         //jugador
         jugador = new Jugador();
-        System.out.println("ingrese nombre del jugador");
-        jugador.setNombre(in.nextLine());
+        jugador.setNombre(nombre);
         jugador.setNumeroMovimientos(50);
         jugador.setVidasRestantes(4);
         

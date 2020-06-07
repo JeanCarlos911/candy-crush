@@ -1,5 +1,6 @@
 package Game;
 
+import GUI.Menu;
 import java.util.Scanner;
 
 public class Partida {
@@ -62,6 +63,8 @@ public class Partida {
      * acciones que se ejecutaran cuando el jugador se quede sin vidas
      */
     private void eventoPerder(){
-        //en proceso
+        //imprime que ha perdido y se va al menu principal
+        System.out.println("No hay vidas suficientes para continuar jugando, you lose!");
+        Menu.iniciar();
     }
 }

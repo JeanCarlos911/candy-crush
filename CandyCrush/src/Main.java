@@ -1,4 +1,3 @@
-
 import GUI.Menu;
 
 //propuestas simbolos dulces ★ ☆ ✮ ✯ ✦ ✧ ☀ ♢ ๑ ★ ☆ ▣ ▤ ▥ ▦ ▩ ☼ ⊙ ◎ ◁ ▷ ✙ ☸ ◈ ◇ ✠ ✡ ✢ ✣ ✤ ✥ ✦ ✧ ★ ✩ ✪ ✫
@@ -6,9 +5,6 @@ import GUI.Menu;
 
 public class Main {
     public static void main(String args[]){
-       Main main = new Main();
-    }
-    public Main(){
-        Menu menu = new Menu();
+       Menu.iniciar();
     }
 }

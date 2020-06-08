@@ -13,7 +13,7 @@ public class Menu {
         //inicializar scanner para su posterior uso
         Scanner in = new Scanner(System.in);
         
-    //Menu principal--------------------------------------------------------------
+        //Menu principal--------------------------------------------------------------
         String nombre, linea="--------------------------------------";
         int opcion;
         
@@ -36,6 +36,8 @@ public class Menu {
             System.out.println(linea + "\nopcion no vàlida");
             this.iniciar();
         }
+
+        in.close();
     }
     
     /**

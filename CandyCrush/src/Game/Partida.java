@@ -20,7 +20,6 @@ public class Partida {
         //jugador
         jugador = new Jugador();
         jugador.setNombre(nombre);
-        jugador.setNombre(nombre);
         jugador.setNumeroMovimientos(50);
         jugador.setVidasRestantes(4);
         

@@ -6,7 +6,9 @@ import GUI.Menu;
 
 public class Main {
     public static void main(String args[]){
-       Menu.iniciar();
-        
+       Main main = new Main();
+    }
+    public Main(){
+        Menu menu = new Menu();
     }
 }

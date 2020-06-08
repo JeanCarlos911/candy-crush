@@ -4,12 +4,20 @@ import Game.Partida;
 import java.util.Scanner;
 
 public class Menu {
+    //Atributos
     
 //Metodos publicos del menu
     /**
      * aqui se genera el menu cuando se crea
      */
     public Menu(){
+        iniciar();
+    }
+    
+    /**
+     * aqui se inicia un nuevo menu
+     */
+    public static void iniciar(){
         //inicializar scanner para su posterior uso
         Scanner in = new Scanner(System.in);
         
@@ -21,28 +29,21 @@ public class Menu {
                 "[2] Salir", "$ ");
         opcion = in.nextInt();
         
-        if(opcion==1){
-            System.out.print(linea + "\ningrese nombre del jugador\n$ ");
-            nombre = in.nextLine();
-            nombre = in.nextLine();//lo coloque dos veces porq siempre se saltaba el primero
-            System.out.println(linea);
-            Partida nueva = new Partida(nombre);
-            
-        }else if(opcion==2){
-            System.out.printf("%s\n%s\n%s\n", linea, ">>ejecucion finalizada exitosamente<<", linea);
-            System.exit(0);
-            
-        }else{
-            System.out.println(linea + "\nopcion no vàlida");
-            this.iniciar();
+        switch (opcion) {
+            case 1:
+                System.out.print(linea + "\ningrese nombre del jugador\n$ ");
+                nombre = in.next();
+                System.out.println(linea);
+                Partida nueva = new Partida(nombre);
+                break;
+            case 2:
+                System.out.printf("%s\n%s\n%s\n", linea, ">>ejecucion finalizada exitosamente<<", linea);
+                System.exit(0);
+            default:
+                System.out.println(linea + "\nopcion no vàlida");
+                Menu.iniciar();
+                break;
         }
-    }
-    
-    /**
-     * aqui se inicia un nuevo menu
-     */
-    public static void iniciar(){
-        Menu main = new Menu();
     }
     
 //Metodos propios del menu

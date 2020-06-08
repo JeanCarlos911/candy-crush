@@ -8,9 +8,10 @@ public class Partida {
     private Jugador jugador;
     private long puntuacionAcumulada;
     
-    //Metodos propios de la partida
+//Metodos propios de la partida
     /**
      * crea y establece valores iniciales para tablero, jugador y puntuacionAcumulada
+     * @param nombre nombre del jugador que jugara en la partida
      */
     public Partida(String nombre){
         //tablero
@@ -69,6 +70,6 @@ public class Partida {
         //imprime que ha perdido y se va al menu principal
         System.out.println("No hay vidas suficientes para continuar jugando, you lose!");
         Menu.iniciar();
-        
     }
+    
 }

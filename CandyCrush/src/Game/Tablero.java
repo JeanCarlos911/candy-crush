@@ -1,11 +1,10 @@
 package Game;
 
 public class Tablero {
-
+    //Atributos
     private Dulce matriz[][];
 
-    public Tablero()
-    {
+    public Tablero(){
         this.matriz = new Dulce[9][9];
     }
 
@@ -18,6 +17,7 @@ public class Tablero {
     }
 
     public void generarTablero(){
+        
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
                 this.setDulce(i, j, new Dulce(Dulce.formaRamdon()));          
@@ -34,8 +34,8 @@ public class Tablero {
         this.setDulce(xf, yf, dulceAmover);
     }
 
-    public void actualizarTablero()
-    {
+    public void actualizarTablero(){
+        
         for(int i = 0; i < 8; i++){
             for(int j = 0; i < 8; j++){
                 if(this.getDulce(i, j) == null){
@@ -45,8 +45,8 @@ public class Tablero {
         }
     }
 
-    public void caerDulces()
-    {
+    public void caerDulces(){
+        
         for(int i = 0; i < 8; i++){
             for(int j = 0; i < 8; j++){
                 try{

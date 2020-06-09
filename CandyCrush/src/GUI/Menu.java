@@ -35,10 +35,12 @@ public class Menu {
                 nombre = in.next();
                 System.out.println(linea);
                 Partida nueva = new Partida(nombre);
+                nueva.iniciarPartida();
                 break;
             case 2:
                 System.out.printf("%s\n%s\n%s\n", linea, ">>ejecucion finalizada exitosamente<<", linea);
                 System.exit(0);
+                break;
             default:
                 System.out.println(linea + "\nopcion no vàlida");
                 Menu.iniciar();

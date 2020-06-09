@@ -16,7 +16,6 @@ public class Partida {
     public Partida(String nombre){
         //tablero
         tablero = new Tablero();
-        tablero.generarTablero();
         
         //jugador
         jugador = new Jugador();

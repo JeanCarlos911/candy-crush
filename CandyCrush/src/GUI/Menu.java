@@ -4,16 +4,11 @@ import Game.Partida;
 import java.util.Scanner;
 
 public class Menu {
-    //Atributos
-    
-//Metodos publicos del menu
-    /**
-     * aqui se genera el menu cuando se crea
-     */
-    public Menu(){
-        iniciar();
+    //Como no es un objeto no dispone de atributos ni de constructor publico
+    private Menu(){
     }
     
+//Metodos del menu
     /**
      * aqui se inicia un nuevo menu
      */
@@ -49,7 +44,4 @@ public class Menu {
 
         in.close();
     }
-    
-//Metodos propios del menu
-    
 }

@@ -16,7 +16,7 @@ public class Menu {
         //inicializar scanner para su posterior uso
         Scanner in = new Scanner(System.in);
         
-    //Menu principal--------------------------------------------------------------
+        //Menu principal--------------------------------------------------------------
         String nombre, linea="--------------------------------------";
         int opcion;
         
@@ -30,14 +30,18 @@ public class Menu {
                 nombre = in.next();
                 System.out.println(linea);
                 Partida nueva = new Partida(nombre);
+                nueva.iniciarPartida();
                 break;
             case 2:
                 System.out.printf("%s\n%s\n%s\n", linea, ">>ejecucion finalizada exitosamente<<", linea);
                 System.exit(0);
+                break;
             default:
                 System.out.println(linea + "\nopcion no vàlida");
                 Menu.iniciar();
                 break;
         }
+
+        in.close();
     }
 }

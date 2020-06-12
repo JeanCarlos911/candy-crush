@@ -34,7 +34,7 @@ public class Tablero {
         this.setDulce(xf, yf, dulceAmover);
     }
 
-    public void actualizarTablero(){
+    public void llenarDulces(){
         
         for(int i = 0; i < 8; i++){
             for(int j = 0; i < 8; j++){
@@ -54,7 +54,7 @@ public class Tablero {
                         Dulce dulceCayo = this.getDulce(i,j);
                         this.setDulce(i, j, null);
                         this.setDulce(j+1, j, dulceCayo);
-                        this.actualizarTablero();
+                        this.llenarDulces();
 
                     }
                 }catch(ArrayIndexOutOfBoundsException e){}

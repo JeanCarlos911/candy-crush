@@ -13,7 +13,7 @@ public class Tablero {
     }
 
     public Dulce getDulce(int fila,int columna){
-        return matriz[fila][columna];
+        return this.matriz[fila][columna];
     }
 
     public void generarTablero(){
@@ -26,12 +26,17 @@ public class Tablero {
     }
 
     public void moverDulce(int xi,int yi,int xf,int yf){
-        
-        Dulce cambio = this.getDulce(xf, yf);
-        Dulce dulceAmover = this.getDulce(xi,yi);
 
-        this.setDulce(xi, yi, cambio);
-        this.setDulce(xf, yf, dulceAmover);
+        if(Math.abs(xf-xi) == 1 || Math.abs(yf-yi) == 1){
+
+            Dulce cambio = this.getDulce(xf, yf);
+            Dulce dulceAmover = this.getDulce(xi,yi);
+
+            this.setDulce(xi, yi, cambio);
+            this.setDulce(xf, yf, dulceAmover);
+
+        }
+        
     }
 
     public void llenarDulces(){

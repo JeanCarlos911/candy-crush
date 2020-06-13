@@ -1,7 +1,7 @@
 package Game;
 
 public class Dulce {
-    //Atributo
+
     private int forma;
     
     /**

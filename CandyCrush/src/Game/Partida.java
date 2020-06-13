@@ -14,17 +14,16 @@ public class Partida {
      * @param nombre nombre del jugador que jugara en la partida
      */
     public Partida(String nombre){
-        //tablero
+
         tablero = new Tablero();
         
-        //jugador
         jugador = new Jugador();
         jugador.setNombre(nombre);
         jugador.setNumeroMovimientos(50);
         jugador.setVidasRestantes(4);
         
-        //puntuacionAcumulada
-        puntuacionAcumulada = 0;
+        
+        this.puntuacionAcumulada = 0;
     }
 
     public long getPuntuacionAcumulada(){
@@ -35,10 +34,9 @@ public class Partida {
      * inicia partida nueva 
      */
     public void iniciarPartida(){
-        //genera nuevo tablero
+        
         tablero.generarTablero();
         
-        //reestablece puntuacion
         puntuacionAcumulada = 0;
     }
     
@@ -66,7 +64,6 @@ public class Partida {
      * acciones que se ejecutaran cuando el jugador se quede sin vidas
      */
     public void eventoPerder(){
-        //imprime que ha perdido y se va al menu principal
         System.out.println("No hay vidas suficientes para continuar jugando, you lose!");
         Menu.iniciar();
     }

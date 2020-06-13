@@ -15,6 +15,15 @@ public class Tablero {
     public Dulce getDulce(int fila,int columna){
         return matriz[fila][columna];
     }
+    
+    public void actualizarTablero(){
+        while(verificarTablero()==true){
+            eliminarDulces();
+            validarPuntuacion();
+            caerDulces();
+            llenarDulces();
+        }
+    }
 
     public void generarTablero(){
         
@@ -34,7 +43,7 @@ public class Tablero {
         this.setDulce(xf, yf, dulceAmover);
     }
 
-    public void llenarDulces(){
+    private void llenarDulces(){
         
         for(int i = 0; i < 8; i++){
             for(int j = 0; i < 8; j++){
@@ -45,7 +54,7 @@ public class Tablero {
         }
     }
 
-    public void caerDulces(){
+    private void caerDulces(){
         
         for(int i = 0; i < 8; i++){
             for(int j = 0; i < 8; j++){
@@ -61,6 +70,18 @@ public class Tablero {
             }
                 
         }
+    }
+
+    private boolean verificarTablero() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void eliminarDulces() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void validarPuntuacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

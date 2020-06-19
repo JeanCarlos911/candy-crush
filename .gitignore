@@ -5,3 +5,6 @@
 /CandyCrush/nbproject/
 /CandyCrush/build.xml
 /CandyCrush/manifest.mf
+------------Repl-----------------------
+*.class
+Main.java

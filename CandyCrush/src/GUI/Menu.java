@@ -17,23 +17,24 @@ public class Menu {
         Scanner in = new Scanner(System.in);
         
         //Menu principal--------------------------------------------------------------
-        String nombre, linea="--------------------------------------";
+        String nombre, linea="★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ";
         int opcion;
         
-        System.out.printf("%s\n%s\n%s\n%s\n%s\n%s",linea,"|             Candy Crush            |",linea,"[1] Empezar nueva partida",
-                "[2] Salir", "$ ");
+        System.out.printf("%s\n%s\n%s\n%s\n%s\n%s\n%s",linea,
+                "★               Candy Crush                ★", linea,
+                "★         [1] Empezar nueva partida        ★",
+                "★         [2] Salir                        ★", linea, "$ ");
         opcion = in.nextInt();
         
         switch (opcion) {
             case 1:
-                System.out.print(linea + "\ningrese nombre del jugador\n$ ");
+                System.out.printf("%s\n★        ingrese nombre del jugador        ★\n%s\n$ ", linea, linea);
                 nombre = in.next();
-                System.out.println(linea);
-                Partida nueva = new Partida(nombre);
-                nueva.iniciarPartida();
+                Partida nuevaPartida = new Partida(nombre);
+                nuevaPartida.iniciarPartida();
                 break;
             case 2:
-                System.out.printf("%s\n%s\n%s\n", linea, ">>ejecucion finalizada exitosamente<<", linea);
+                System.out.printf("%s\n%s\n%s\n", linea, "★    ejecucion finalizada exitosamente    ★", linea);
                 System.exit(0);
                 break;
             default:

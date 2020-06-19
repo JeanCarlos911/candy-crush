@@ -17,11 +17,13 @@ public class Tablero {
     }
     
     public void actualizarTablero(){
-        while(verificarTablero()==true){
-            eliminarDulces();
-            validarPuntuacion();
-            caerDulces();
-            llenarDulces();
+        
+        while(this.verificarTablero()){
+
+            this.eliminarDulces();
+            this.validarPuntuacion();
+            this.caerDulces();
+            this.llenarDulces();
         }
     }
 
@@ -77,16 +79,78 @@ public class Tablero {
         }
     }
 
+    private boolean hayFila(){
+
+        int fila = 0,columna = 0,contadorDulces = 1;
+        boolean filas = false;
+
+        while(fila < 8){
+            while(columna < 7){
+                if(this.getDulce(fila, columna).getForma() == this.getDulce(fila, columna+1).getForma()){
+                    contadorDulces += 1;
+                    columna += 1;
+                }else{
+                    if(contadorDulces >= 3 && contadorDulces <= 6){
+                        filas = true;
+                        return filas;
+                    }else{
+                        contadorDulces = 0;
+                        columna = 0;
+                        fila += 1;
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        return filas;
+    }
+
+    private boolean hayColumna(){
+
+        int fila = 0,columna = 0,contadorDulces = 1;
+        boolean columnas = false;
+
+        while(columna < 8){
+            while(fila < 7){
+                if(this.getDulce(fila, columna).getForma() == this.getDulce(fila+1, columna).getForma()){
+                    contadorDulces += 1;
+                    fila += 1;
+                }else{
+                    if(contadorDulces >= 3 && contadorDulces <= 6){
+                        columnas = true;
+                        return columnas;
+                    }else{
+                        contadorDulces = 0;
+                        fila = 0;
+                        columna += 1;
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        return columnas;
+    }
+
     private boolean verificarTablero() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        boolean estado = false;
+
+        if(this.hayFila() || this.hayColumna()){
+            estado = true;
+        }
+
+        return estado;
     }
 
     private void eliminarDulces() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     private void validarPuntuacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }

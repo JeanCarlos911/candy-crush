@@ -63,17 +63,16 @@ public class Tablero {
 
     private void caerDulces(){
         
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i <= 7; i++){
             for(int j = 0; i < 8; j++){
-                try{
-                    if(this.getDulce(i,j) != null && this.getDulce(i+1,j) == null){
-                        Dulce dulceCayo = this.getDulce(i,j);
-                        this.setDulce(i, j, null);
-                        this.setDulce(j+1, j, dulceCayo);
-                        this.llenarDulces();
+                if(this.getDulce(i,j) != null && this.getDulce(i+1,j) == null){
+                    Dulce dulceCayo = this.getDulce(i,j);
+                    this.setDulce(i, j, null);
+                    this.setDulce(j+1, j, dulceCayo);
+                    this.llenarDulces();
 
-                    }
-                }catch(ArrayIndexOutOfBoundsException e){}
+                }
+                
             }
                 
         }
@@ -85,7 +84,7 @@ public class Tablero {
         boolean filas = false;
 
         while(fila < 8){
-            while(columna < 7){
+            while(columna <= 7){
                 if(this.getDulce(fila, columna).getForma() == this.getDulce(fila, columna+1).getForma()){
                     contadorDulces += 1;
                     columna += 1;
@@ -94,11 +93,22 @@ public class Tablero {
                         filas = true;
                         return filas;
                     }else{
-                        contadorDulces = 0;
-                        columna = 0;
-                        fila += 1;
-                    }
-                    
+                        /*Si no ha formado la fila indeendientemente de si debe seguir recorriendola
+                          El contador de dulces se vuelve a resetear
+                        */
+                        contadorDulces = 1;
+
+                        /*Condicion para mirar si esta en la penultima columna y debe pasar a la siguiente
+                        fila o se mantiene en la misma*/
+
+                        if(columna >= 7){
+                            columna = 0;
+                            fila += 1;
+                        }else{
+                            columna += 1;
+                        }
+                        
+                    }   
                 }
             }
             
@@ -113,7 +123,7 @@ public class Tablero {
         boolean columnas = false;
 
         while(columna < 8){
-            while(fila < 7){
+            while(fila <= 7){
                 if(this.getDulce(fila, columna).getForma() == this.getDulce(fila+1, columna).getForma()){
                     contadorDulces += 1;
                     fila += 1;
@@ -123,8 +133,12 @@ public class Tablero {
                         return columnas;
                     }else{
                         contadorDulces = 0;
-                        fila = 0;
-                        columna += 1;
+                        if(fila >= 7){
+                            fila = 0;
+                            columna += 1;
+                        }else{
+                            fila += 1;
+                        }
                     }
                     
                 }
@@ -135,14 +149,16 @@ public class Tablero {
         return columnas;
     }
 
-    private boolean verificarTablero() {
-        boolean estado = false;
+    public boolean verificarMovimiento(){
 
         if(this.hayFila() || this.hayColumna()){
-            estado = true;
+            return true;
         }
+        return false;
+    }
 
-        return estado;
+    private boolean verificarTablero() {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     private void eliminarDulces() {

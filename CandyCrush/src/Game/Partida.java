@@ -1,5 +1,6 @@
 package Game;
 
+import GUI.Estado;
 import GUI.Menu;
 
 public class Partida {
@@ -7,20 +8,23 @@ public class Partida {
     private Tablero tablero;
     private Jugador jugador;
     private long puntuacionAcumulada;
+    private Nivel nivel;
     
 //Metodos propios de la partida
+    
     /**
      * crea y establece valores iniciales para tablero, jugador y puntuacionAcumulada
      * @param nombre nombre del jugador que jugara en la partida
      */
     public Partida(String nombre){
-
-        tablero = new Tablero();
+        this.nivel = new Nivel();
         
-        jugador = new Jugador();
-        jugador.setNombre(nombre);
-        jugador.setNumeroMovimientos(50);
-        jugador.setVidasRestantes(4);
+        this.tablero = new Tablero();
+        
+        this.jugador = new Jugador();
+        this.jugador.setNombre(nombre);
+        this.jugador.setNumeroMovimientos(50);
+        this.jugador.setVidasRestantes(4);
         
         
         this.puntuacionAcumulada = 0;
@@ -36,8 +40,8 @@ public class Partida {
     public void iniciarPartida(){
         
         tablero.generarTablero();
-        
         puntuacionAcumulada = 0;
+        Estado.actualizarDibujoJuego(this, this.jugador, this.tablero, this.nivel);
     }
     
     /**

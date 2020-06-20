@@ -28,6 +28,7 @@ public class Estado {
      */
     public static void actualizarDibujoJuego(Partida p, Jugador j, Tablero t, Nivel n) {
         Menu.nextPage();
+        //Estructura similar al html para estar familiarizados
         header();
         aside(j);
         tablero(t);

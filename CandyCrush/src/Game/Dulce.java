@@ -14,10 +14,10 @@ public class Dulce {
     
     /**
      * Devuelve una forma aleatoria a traves de un int representativo
-     * @return int representativo
+     * @return int representativo de la forma del dulce
      */
     public static int formaRamdon(){
-        int numeroAleatorio = (int)(Math.random()*6+1);
+        int numeroAleatorio = (int)(Math.random()*5+1);
         return numeroAleatorio;
     }
     

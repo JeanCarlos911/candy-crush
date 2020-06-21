@@ -3,7 +3,10 @@ package Game;
 public class Tablero {
     //Atributos
     private Dulce matriz[][];
-
+    
+    /**
+     * Al crear un tablero, se establece el tamaño de la matriz de dulces
+     */
     public Tablero(){
         this.matriz = new Dulce[9][9];
     }
@@ -29,8 +32,8 @@ public class Tablero {
 
     public void generarTablero(){
         
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
                 this.setDulce(i, j, new Dulce(Dulce.formaRamdon()));          
             }
         }

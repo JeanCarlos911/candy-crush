@@ -7,7 +7,7 @@ public class Jugador {
     private int vidasRestantes;
     private int numeroMovimientos;
 
-    //Metods setter y getter
+    //Methods setters y getters
     public void setVidasRestantes(int vidasRestantes){
         this.vidasRestantes = vidasRestantes;
     }

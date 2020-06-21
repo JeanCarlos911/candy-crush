@@ -14,9 +14,13 @@ public class Nivel {
         this.puntuacionObjetivo = 1000;
     }
     
-    
+    //Setters y getters
     public String getNombre(){
         return this.nombre;
+    }
+    
+    public long getPuntuacionObjetivo(){
+        return this.puntuacionObjetivo;
     }
     
     /**

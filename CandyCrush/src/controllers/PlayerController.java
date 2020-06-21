@@ -37,6 +37,8 @@ public class PlayerController {
             System.out.println("Ingrese posiciones validas tarado :v");
             this.setPosicion();
         }
+
+        
     }
 
 

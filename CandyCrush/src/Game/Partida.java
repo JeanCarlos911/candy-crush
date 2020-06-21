@@ -1,74 +1,70 @@
 package Game;
 
+import GUI.Estado;
 import GUI.Menu;
 import controllers.PlayerController;
 
 public class Partida {
-    //Atributos
+    // Atributos
     private Tablero tablero;
     private Jugador jugador;
     private long puntuacionAcumulada;
     private PlayerController controlador;
-    
-//Metodos propios de la partida
+    private Nivel nivel;
+
+    // Metodos propios de la partida
+
     /**
-     * crea y establece valores iniciales para tablero, jugador y puntuacionAcumulada
+     * crea y establece valores iniciales para tablero, jugador y
+     * puntuacionAcumulada
+     * 
      * @param nombre nombre del jugador que jugara en la partida
      */
-    public Partida(String nombre){
+    public Partida(String nombre) {
+        this.nivel = new Nivel();
 
-        tablero = new Tablero();
-        
-        jugador = new Jugador();
-        jugador.setNombre(nombre);
-        jugador.setNumeroMovimientos(50);
-        jugador.setVidasRestantes(4);
-        
+        this.tablero = new Tablero();
+
+        this.jugador = new Jugador(nombre);
+
         this.controlador = new PlayerController();
-        
+
         this.puntuacionAcumulada = 0;
     }
 
-    public long getPuntuacionAcumulada(){
+    public long getPuntuacionAcumulada() {
         return this.puntuacionAcumulada;
     }
-    
+
     /**
-     * inicia partida nueva 
+     * inicia partida nueva
      */
-    public void iniciarPartida(){
-        
-        tablero.generarTablero();
-        controlador.setPosicion();
-        puntuacionAcumulada = 0;
-    }
-    
-    /**
-     * Revisa si el jugador dispone de movimientos, si son cero revisa si tiene vidas
-     * disponibles para iniciar otra partida de lo contrario se iniciara el evento perder
-     */
-    public void evaluarPerder(){
-        
-        if(jugador.getNumeroMovimientos()==0){
-
-            if(jugador.getVidasRestantes()>0){
-
-                jugador.setNumeroMovimientos(50);
-                jugador.setVidasRestantes(jugador.getVidasRestantes()-1);
-                iniciarPartida();
-
-            }else{
-                eventoPerder();
-            }
+    public void pedirEntrada() {
+        while (this.jugador.getVidasRestantes() > 0 || this.jugador.getNumeroMovimientos() > 0) {
+            Estado.actualizarDibujoJuego(this, this.jugador, this.tablero, this.nivel);
+            controlador.setPosicion();
+            jugador.restarMovimientos();
         }
     }
-    
+
+    public void iniciarPartida() {
+
+        tablero.generarTablero();
+        this.puntuacionAcumulada = 0;
+        this.pedirEntrada();
+
+    }
+
     /**
-     * acciones que se ejecutaran cuando el jugador se quede sin vidas
+     * Revisa si el jugador dispone de movimientos, si son cero revisa si tiene
+     * vidas disponibles para iniciar otra partida de lo contrario se iniciara el
+     * evento perder
+     * 
+     * /** acciones que se ejecutaran cuando el jugador se quede sin vidas
      */
-    public void eventoPerder(){
+    public static void eventoPerder() {
         System.out.println("No hay vidas suficientes para continuar jugando, you lose!");
         Menu.iniciar();
     }
-    
+
 }

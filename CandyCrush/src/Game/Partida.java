@@ -1,12 +1,14 @@
 package Game;
 
 import GUI.Menu;
+import controllers.PlayerController;
 
 public class Partida {
     //Atributos
     private Tablero tablero;
     private Jugador jugador;
     private long puntuacionAcumulada;
+    private PlayerController controlador;
     
 //Metodos propios de la partida
     /**
@@ -22,6 +24,7 @@ public class Partida {
         jugador.setNumeroMovimientos(50);
         jugador.setVidasRestantes(4);
         
+        this.controlador = new PlayerController();
         
         this.puntuacionAcumulada = 0;
     }
@@ -36,7 +39,7 @@ public class Partida {
     public void iniciarPartida(){
         
         tablero.generarTablero();
-        
+        controlador.setPosicion();
         puntuacionAcumulada = 0;
     }
     

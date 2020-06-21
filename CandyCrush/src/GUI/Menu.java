@@ -34,6 +34,7 @@ public class Menu {
                 System.out.printf("%s\n★       ingrese nombre del jugador        ★\n%s\n$ ", linea, linea);
                 nombre = in.next();
                 Partida nuevaPartida = new Partida(nombre);
+                
                 nuevaPartida.iniciarPartida();
                 break;
             case 2:

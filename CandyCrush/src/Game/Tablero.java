@@ -38,15 +38,13 @@ public class Tablero {
 
     public void moverDulce(int xi,int yi,int xf,int yf){
 
-        if(Math.abs(xf-xi) == 1 || Math.abs(yf-yi) == 1){
+        Dulce cambio = this.getDulce(xf, yf);
+        Dulce dulceAmover = this.getDulce(xi,yi);
 
-            Dulce cambio = this.getDulce(xf, yf);
-            Dulce dulceAmover = this.getDulce(xi,yi);
+        this.setDulce(xi, yi, cambio);
+        this.setDulce(xf, yf, dulceAmover);
 
-            this.setDulce(xi, yi, cambio);
-            this.setDulce(xf, yf, dulceAmover);
-
-        }
+        
         
     }
 
@@ -149,16 +147,11 @@ public class Tablero {
         return columnas;
     }
 
-    public boolean verificarMovimiento(){
-
+    private boolean verificarTablero() {
         if(this.hayFila() || this.hayColumna()){
             return true;
         }
         return false;
-    }
-
-    private boolean verificarTablero() {
-        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     private void eliminarDulces() {

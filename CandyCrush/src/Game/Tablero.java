@@ -3,7 +3,7 @@ package Game;
 public class Tablero {
     //Atributos
     private Dulce matriz[][];
-    
+    private long puntuacion;
     /**
      * Al crear un tablero, se establece el tamaño de la matriz de dulces
      */
@@ -18,13 +18,31 @@ public class Tablero {
     public Dulce getDulce(int fila,int columna){
         return this.matriz[fila][columna];
     }
+
+    public void setPuntuacion(long puntuacion){
+        this.puntuacion = puntuacion;
+    }
+
+    public long getPuntuacion(){
+        return this.puntuacion;
+    } 
     
     public void actualizarTablero(){
         
         while(this.verificarTablero()){
 
-            this.eliminarDulces();
-            this.validarPuntuacion();
+            //this.eliminarDulces();
+            //this.validarPuntuacion();
+            this.caerDulces();
+            this.llenarDulces();
+        }
+    }
+
+    public void organizar(){
+        
+        while(this.verificarTablero()){
+
+            //this.eliminarDulces();
             this.caerDulces();
             this.llenarDulces();
         }
@@ -39,16 +57,14 @@ public class Tablero {
         }
     }
 
-    public void moverDulce(int xi,int yi,int xf,int yf){
+    public void moverDulce(int[] arreglo){
 
-        Dulce cambio = this.getDulce(xf, yf);
-        Dulce dulceAmover = this.getDulce(xi,yi);
+        Dulce cambio = this.getDulce(arreglo[2], arreglo[3]);
+        Dulce dulceAmover = this.getDulce(arreglo[0],arreglo[1]);
 
-        this.setDulce(xi, yi, cambio);
-        this.setDulce(xf, yf, dulceAmover);
+        this.setDulce(arreglo[0], arreglo[1], cambio);
+        this.setDulce(arreglo[2], arreglo[3], dulceAmover);
 
-        
-        
     }
 
     private void llenarDulces(){
@@ -92,6 +108,7 @@ public class Tablero {
                 }else{
                     if(contadorDulces >= 3 && contadorDulces <= 6){
                         filas = true;
+                        this.validarPuntuacion(contadorDulces);
                         return filas;
                     }else{
                         /*Si no ha formado la fila indeendientemente de si debe seguir recorriendola
@@ -131,6 +148,7 @@ public class Tablero {
                 }else{
                     if(contadorDulces >= 3 && contadorDulces <= 6){
                         columnas = true;
+                        this.validarPuntuacion(contadorDulces);
                         return columnas;
                     }else{
                         contadorDulces = 0;
@@ -161,8 +179,25 @@ public class Tablero {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
-    private void validarPuntuacion() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    private void validarPuntuacion(int cantidadDulces) {
+        switch(cantidadDulces){
+            case 3:
+                this.puntuacion += 50;
+                break;
+            case 4:
+                this.puntuacion += 100;
+                break;
+            case 5:
+                this.puntuacion += 200;
+                break;
+            case 6:
+                this.puntuacion += 400;
+                break;
+            default:
+                this.puntuacion += 0;
+                break;
+
+        }
     }
     
 }

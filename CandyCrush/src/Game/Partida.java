@@ -43,6 +43,10 @@ public class Partida {
         while (this.jugador.getVidasRestantes() > 0 || this.jugador.getNumeroMovimientos() > 0) {
             Estado.actualizarDibujoJuego(this, this.jugador, this.tablero, this.nivel);
             controlador.setPosicion();
+            tablero.moverDulce(controlador.getPosiciones());
+            tablero.setPuntuacion(0);
+            tablero.actualizarTablero();
+            this.puntuacionAcumulada += tablero.getPuntuacion();
             jugador.restarMovimientos();
         }
     }
@@ -50,6 +54,7 @@ public class Partida {
     public void iniciarPartida() {
 
         tablero.generarTablero();
+        tablero.organizar();
         this.puntuacionAcumulada = 0;
         this.pedirEntrada();
 

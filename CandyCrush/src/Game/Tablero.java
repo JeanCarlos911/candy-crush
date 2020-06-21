@@ -176,7 +176,61 @@ public class Tablero {
     }
 
     private void eliminarDulces() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        int cont=0;
+        int cont1=0;
+        int[] m=new int[7];
+        int[] m1=new int[7];
+         for(int i=0;i<3;i++){
+             for(int j=0;j<3;j++)
+             {
+                 if(matriz[i][j] == matriz[i][j+1])
+                 {
+                     cont++;
+                     m[cont]=j;
+                 }
+                  if(matriz[j][i] == matriz[j+1][i])
+                 {
+                     cont1++;
+                      m1[cont]=j;
+                 }
+                 
+             }
+             cont=0;
+             cont1=0;
+             
+                 if((cont==3)||(cont1==3))
+                 {
+                     validarPuntuacion(3);
+                     for(int s=0;s<4;i++)
+                     {
+                         matriz[i][m[s]]=null;
+                     }
+                 }
+                 else if((cont==4)||(cont1==4))
+                 {
+                     validarPuntuacion(4);
+                     for(int s=0;s<5;i++)
+                     {
+                         matriz[i][m1[s]]=null;
+                     }
+                 }
+                 else if((cont==5)||(cont1==5))
+                 {
+                     validarPuntuacion(5);
+                     for(int s=0;s<6;i++)
+                     {
+                         matriz[i][m1[s]]=null;
+                     }
+                 }
+                 else if((cont==6)||(cont1==6))
+                 {
+                     validarPuntuacion(6);
+                     for(int s=0;s<7;i++)
+                     {
+                         matriz[i][m1[s]]=null;
+                     }
+                 }
+         }
     }
 
     private void validarPuntuacion(int cantidadDulces) {

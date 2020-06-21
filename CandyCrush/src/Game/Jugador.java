@@ -1,5 +1,6 @@
 package Game;
 
+
 public class Jugador {
 
     //Atributos
@@ -7,9 +8,15 @@ public class Jugador {
     private int vidasRestantes;
     private int numeroMovimientos;
 
+    public Jugador(String nombre){
+        this.nombre = nombre;
+        this.vidasRestantes = 5;
+        this.numeroMovimientos = 50;
+    }
+
     //Methods setters y getters
-    public void setVidasRestantes(int vidasRestantes){
-        this.vidasRestantes = vidasRestantes;
+    public void bajarVida(){
+        this.vidasRestantes -= 1;
     }
 
     public int getVidasRestantes(){
@@ -24,8 +31,17 @@ public class Jugador {
         return this.nombre;
     }
 
-    public void setNumeroMovimientos(int numeroMovimientos){
-        this.numeroMovimientos = numeroMovimientos;
+    public void restarMovimientos(){
+        if(numeroMovimientos > 0){
+            numeroMovimientos -= 1;
+        }else if(vidasRestantes > 0){
+            numeroMovimientos += 49;
+            vidasRestantes -= 1;
+        }else{
+            Partida.eventoPerder();
+        }
+        
+        
     }
 
     public int getNumeroMovimientos(){

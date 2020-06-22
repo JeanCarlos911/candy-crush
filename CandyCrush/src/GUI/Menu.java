@@ -46,8 +46,6 @@ public class Menu {
                 Menu.iniciar();
                 break;
         }
-
-        in.close();
     }
     
     /**
@@ -57,7 +55,6 @@ public class Menu {
         Scanner in = new Scanner(System.in);
         System.out.println("¿Desea ir al menú principal? (1)Si/(0)No");
         int answer = in.nextInt();
-        in.close();
         switch(answer){
             case 1:
                 Menu.iniciar();

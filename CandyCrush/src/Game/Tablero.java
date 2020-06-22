@@ -64,10 +64,8 @@ public class Tablero {
      */
     public void organizar(){
         boolean existe = this.hayLinea();
-        System.out.println("paso por aca 1");
         if(existe){
             this.eliminarDulces();
-            System.out.println("paso por aca 2");
             this.caerDulces();
             this.llenarDulces();
             organizar();
@@ -81,71 +79,51 @@ public class Tablero {
     private boolean hayLinea() {
         int fila = 0, columna = 0, contadorDulces = 1;
         
-        while(fila < 9){
-            while(columna < 8){
-                if(this.matriz[fila][columna].getForma() == this.matriz[fila][columna+1].getForma()){
-                    contadorDulces ++;
-                    if(columna<7){
-                        columna ++;
-                    }else if(contadorDulces > 2){
-                        return true;
-                    }else{
-                        if(fila < 8){
-                            columna = 0;
-                            fila ++;
-                        }else{
-                            columna ++;
-                            if(fila > 7){
-                                break;
-                            }
-                        }
-                    }
+        while(columna < 8){
+            if(this.matriz[fila][columna].getForma() == this.matriz[fila][columna+1].getForma()){
+                contadorDulces ++;
+            }else{
+                if(contadorDulces > 2){
+                    return true;
                 }else{
-                    if(contadorDulces > 2){
-                        return true;
-                    }else{
-                        /*Si no ha formado la fila independientemente de si debe seguir recorriendola el contador
-                        de dulces se vuelve a resetear*/
-                        contadorDulces = 1;
-                        /*Condicion para mirar si esta en la penultima columna y debe pasar a la siguiente
-                        fila o se mantiene en la misma*/
-                        if(columna > 6 && fila < 8){
-                            columna = 0;
-                            fila ++;
-                        }else{
-                            columna ++;
-                            if(fila > 7){
-                                break;
-                            }
-                        }
-                    }   
+                    contadorDulces = 1;
                 }
             }
+            if(columna<7){
+                columna ++;
+            }else if(contadorDulces > 2){
+                return true;
+            }else if(fila < 8){
+                fila ++;
+                columna = 0;
+                contadorDulces = 1;
+            }else{
+                break;
+            }
         }
-        fila = 0; columna = 0;contadorDulces = 1;
         
-        while(columna < 9){
-            while(fila < 8){
-                System.out.println("bucle");
-                if(this.getDulce(fila, columna).getForma() == this.getDulce(fila+1, columna).getForma()){
-                    contadorDulces ++;
-                    fila += 1;
+        fila = 0; columna = 0; contadorDulces = 1;
+        
+        while(fila < 8){
+            if(this.matriz[fila][columna].getForma() == this.matriz[fila+1][columna].getForma()){
+                contadorDulces ++;
+            }else{
+                if(contadorDulces > 2){
+                    return true;
                 }else{
-                    if(contadorDulces > 2){
-                        return true;
-                    }else{
-                        contadorDulces = 1;
-                        if(fila > 6){
-                            fila = 0;
-                            columna ++;
-                        }else{
-                            fila ++;
-                            if(columna > 7){
-                                break;
-                            }
-                        }
-                    }
+                    contadorDulces = 1;
                 }
+            }
+            if(fila<7){
+                fila ++;
+            }else if(contadorDulces > 2){
+                return true;
+            }else if(columna < 8){
+                columna ++;
+                fila = 0;
+                contadorDulces = 1;
+            }else{
+                break;
             }
         }
         
@@ -158,50 +136,51 @@ public class Tablero {
      */
     private int[] encontrarLinea() {
         int fila = 0, columna = 0, contadorDulces = 1;
-        
-        while(fila < 9){
-            while(columna < 8){
-                if(this.getDulce(fila, columna).getForma() == this.getDulce(fila, columna+1).getForma()){
-                    contadorDulces ++;
-                    columna ++;
+        while(columna < 8){
+            if(this.matriz[fila][columna].getForma() == this.matriz[fila][columna+1].getForma()){
+                contadorDulces ++;
+            }else{
+                if(contadorDulces > 2){
+                    return new int[]{contadorDulces, fila, columna + 1, 0};
                 }else{
-                    if(contadorDulces > 2){
-                        return new int[]{contadorDulces, fila, columna + 1, 0};
-                    }else{
-                        contadorDulces = 1;
-                        if(columna > 6){
-                            columna = 0;
-                            fila ++;
-                        }else{
-                            columna ++;
-                        }
-                    }   
+                    contadorDulces = 1;
                 }
+            }
+            if(columna<7){
+                columna ++;
+            }else if(contadorDulces > 2){
+                return new int[]{contadorDulces, fila, columna + 1, 0};
+            }else if(fila < 8){
+                fila ++;
+                columna = 0;
+                contadorDulces = 1;
+            }else{
+                break;
             }
         }
         fila = 0; columna = 0; contadorDulces = 1;
-        
-        while(columna < 9){
-            while(fila < 8){
-                if(this.getDulce(fila, columna).getForma() == this.getDulce(fila + 1, columna).getForma()){
-                    contadorDulces ++;
-                    fila += 1;
+        while(fila < 8){
+            if(this.matriz[fila][columna].getForma() == this.matriz[fila+1][columna].getForma()){
+                contadorDulces ++;
+            }else{
+                if(contadorDulces > 2){
+                    return new int[]{contadorDulces, fila + 1, columna, 1};
                 }else{
-                    if(contadorDulces > 2){
-                        return new int[]{contadorDulces, fila + 1, columna, 1};
-                    }else{
-                        contadorDulces = 1;
-                        if(fila > 6){
-                            fila = 0;
-                            columna ++;
-                        }else{
-                            fila ++;
-                        }
-                    }
+                    contadorDulces = 1;
                 }
             }
+            if(fila<7){
+                fila ++;
+            }else if(contadorDulces > 2){
+                return new int[]{contadorDulces, fila + 1, columna, 1};
+            }else if(columna < 8){
+                columna ++;
+                fila = 0;
+                contadorDulces = 1;
+            }else{
+                break;
+            }
         }
-        System.out.println("error, fila no encontrada");
         return new int[]{-1};
     }
 

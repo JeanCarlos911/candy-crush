@@ -41,8 +41,12 @@ public class Partida {
             tablero.actualizarTablero();
             this.puntuacionAcumulada += tablero.getPuntuacion();
             jugador.restarMovimientos();
+            if(evaluarGanar()==true){
+                Menu.finalizar();
+                break;
+            }
         }
-        evaluar();
+        evaluarPerder();
     }
     
     /**
@@ -62,15 +66,27 @@ public class Partida {
      * 
      * /** acciones que se ejecutaran cuando el jugador se quede sin vidas
      */
-    public void evaluar() {
-        if(this.puntuacionAcumulada>=nivel.getPuntuacionObjetivo()){
-            System.out.println("Superaste el único nivel desarrollado hasta el momento\n"
-                    + "     ¡ HAS GANADO !");
-        }else {
+    public void evaluarPerder() {
+        if(this.puntuacionAcumulada<nivel.getPuntuacionObjetivo()){
             System.out.println("No hay vidas suficientes ni turnos para continuar jugando y no alcanzó la meta establecida\n"
                     + "     ¡ HAS PERDIDO !");
         }
         Menu.finalizar();
+    }
+
+    /**
+     * Revisa si el jugador ha llegado a la puntuacion objetivo, en caso afirmativo
+     * imprime que ha ganado y retorna true
+     * @return true si el jugador gana
+     */
+    public boolean evaluarGanar() {
+        if(this.puntuacionAcumulada>=nivel.getPuntuacionObjetivo()){
+            System.out.println("Superaste el único nivel desarrollado hasta el momento\n"
+                    + "     ¡ HAS GANADO !");
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

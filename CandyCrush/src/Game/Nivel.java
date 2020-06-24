@@ -29,4 +29,8 @@ public class Nivel {
         return this.puntuacionObjetivo;
     }
 
+    public int getNivel(){
+        return this.nivel;
+    }
+
 }

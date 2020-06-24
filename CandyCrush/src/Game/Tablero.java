@@ -69,6 +69,9 @@ public class Tablero {
             this.caerDulces();
             this.llenarDulces();
             organizar();
+        }else if(hayPosibleMovimiento() == false){
+            generarTablero();
+            organizar();
         }
     }
 
@@ -247,15 +250,28 @@ public class Tablero {
     /**
      * Actualiza el tablero con la variante que adiciona la puntuacion generada
      */
-    public void actualizarTablero(){
+    public boolean actualizarTablero(){
         boolean existe = this.hayLinea();
         if(existe){
             this.eliminarDulces();
             this.validarPuntuacion();
             this.caerDulces();
             this.llenarDulces();
-            actualizarTablero();
+            this.actualizarTablero();
+            
+            return true;
+        }else if(this.puntuacion == 0){
+            return false;
+        }else{
+            if(this.hayPosibleMovimiento()){
+                return true;
+            }else{
+                generarTablero();
+                organizar();
+                return true;
+            }
         }
+
     }
 
     /**
@@ -295,6 +311,142 @@ public class Tablero {
                 this.puntuacion += 0;
                 break;
         }
+    }
+
+    private boolean hayPosibleMovimiento(){
+        int contador = 0;
+        String direccion = "";
+        for(int i = 0; i <= 8; i++){
+            for(int j = 0; j <= 8; j++){
+                contador = 0;
+                direccion = "";
+                try{
+                    if(this.matriz[i][j-1].getForma() == this.matriz[i-1][j].getForma()){
+                        contador++;
+                        direccion = "leftup";
+                    }
+
+                    if(this.matriz[i-1][j].getForma() == this.matriz[i][j+1].getForma()){
+                        contador++;
+                        direccion = "uprigth";
+                    }
+
+                    if(this.matriz[i][j+1].getForma() == this.matriz[i+1][j].getForma()){
+                        contador++;
+                        direccion = "rigthdown";
+                    }
+
+                    if(this.matriz[i+1][j].getForma() == this.matriz[i][j-1].getForma()){
+                        contador++;
+                        direccion = "downleft";
+                    }
+
+                    if(this.matriz[i][j-1].getForma() == this.matriz[i][j+1].getForma()){
+                        contador++;
+                        direccion = "fila";
+                    }
+
+                    if(this.matriz[i-1][j].getForma() == this.matriz[i+1][j].getForma()){
+                        contador++;
+                        direccion = "columna";
+                    }
+
+                    if(contador >= 3){
+                        return true;
+                    }else if(contador == 1){
+                        contador = 0;
+                        if(direccion.equals("leftup")){
+                            if(this.matriz[i][j-2].getForma() == this.matriz[i][j-1].getForma()){
+                                contador++;
+                            }
+
+                            if(this.matriz[i-2][j].getForma() == this.matriz[i-1][j].getForma()){
+                                contador++;
+                            }
+
+                            if(contador >= 2){
+                                return true;
+                            }
+                        }
+
+                        if(direccion.equals("uprigth")){
+                            if(this.matriz[i-2][j].getForma() == this.matriz[i-1][j].getForma()){
+                                contador++;
+                            }
+
+                            if(this.matriz[i][j+2].getForma() == this.matriz[i][j+1].getForma()){
+                                contador++;
+                            }
+
+                            if(contador >= 2){
+                                return true;
+                            }
+                        }
+
+                        if(direccion.equals("rigthdown")){
+                            if(this.matriz[i][j+2].getForma() == this.matriz[i][j+1].getForma()){
+                                contador++;
+                            }
+
+                            if(this.matriz[i+2][j].getForma() == this.matriz[i+1][j].getForma()){
+                                contador++;
+                            }
+
+                            if(contador >= 2){
+                                return true;
+                            }
+                        }
+
+                        if(direccion.equals("downleft")){
+                            if(this.matriz[i+2][j].getForma() == this.matriz[i+1][j].getForma()){
+                                contador++;
+                            }
+
+                            if(this.matriz[i][j-2].getForma() == this.matriz[i][j-1].getForma()){
+                                contador++;
+                            }
+
+                            if(contador >= 2){
+                                return true;
+                            }
+                        }
+
+                        if(direccion.equals("columna")){
+                            if(this.matriz[i+2][j].getForma() == this.matriz[i+1][j].getForma()){
+                                contador++;
+                            }
+
+                            if(this.matriz[i-2][j].getForma() == this.matriz[i-1][j].getForma()){
+                                contador++;
+                            }
+
+                            if(contador >= 2){
+                                return true;
+                            }
+                        }
+
+
+                        if(direccion.equals("fila")){
+                            if(this.matriz[i][j+2].getForma() == this.matriz[i][j+1].getForma()){
+                                contador++;
+                            }
+
+                            if(this.matriz[i][j-2].getForma() == this.matriz[i][j-1].getForma()){
+                                contador++;
+                            }
+
+                            if(contador >= 2){
+                                return true;
+                            }
+                        }
+
+                    }
+
+                }catch(ArrayIndexOutOfBoundsException e){}
+
+            }
+        }
+        return false;
     }
     
 }

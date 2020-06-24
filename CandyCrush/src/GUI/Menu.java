@@ -46,6 +46,7 @@ public class Menu {
                 Menu.iniciar();
                 break;
         }
+        in.close();
     }
     
     /**
@@ -66,6 +67,7 @@ public class Menu {
                 System.out.println("Opción no válida, digite nuevamente");
                 Menu.finalizar();
         }
+        in.close();
     }
 
     /**

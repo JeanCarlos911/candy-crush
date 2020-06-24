@@ -4,7 +4,7 @@ import Game.Partida;
 import java.util.Scanner;
 
 public class Menu {
-    //Como no es un objeto no dispone de atributos ni de constructor publico
+    //Como no es un objeto no dispone de atributos y su constructor no es publico
     private Menu(){
     }
     
@@ -31,10 +31,9 @@ public class Menu {
         switch (opcion) {
             case 1:
                 nextPage();
-                System.out.printf("%s\n★       ingrese nombre del jugador        ★\n%s\n$ ", linea, linea);
+                System.out.printf("%s\n★       Ingrese nombre del jugador        ★\n%s\n$ ", linea, linea);
                 nombre = in.next();
                 Partida nuevaPartida = new Partida(nombre);
-                
                 nuevaPartida.iniciarPartida();
                 break;
             case 2:
@@ -43,15 +42,39 @@ public class Menu {
                 System.exit(0);
                 break;
             default:
-                System.out.println(linea + "\nopcion no válida");
+                System.out.println(linea + "\nopción no válida");
                 Menu.iniciar();
                 break;
         }
-
+        in.close();
+    }
+    
+    /**
+     * Se ejecuta una vez finalizado el juego
+     */
+    public static void finalizar(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("¿Desea ir al menú principal? (1)Si/(0)No");
+        int answer = in.nextInt();
+        switch(answer){
+            case 1:
+                Menu.iniciar();
+                break;
+            case 0:
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Opción no válida, digite nuevamente");
+                Menu.finalizar();
+        }
         in.close();
     }
 
+    /**
+     * Este método realiza varios saltos de linea para iniciar un nuevo frame limpio en consola
+     */
     public static void nextPage(){
       System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
+    
 }

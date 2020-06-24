@@ -1,7 +1,7 @@
 package Game;
 
 public class Dulce {
-
+    //Atributos
     private int forma;
     
     /**
@@ -13,20 +13,28 @@ public class Dulce {
     }
     
     /**
+     * Retorna forma del dulce
+     * @return int representativo de la forma
+     */
+    public int getForma(){
+        return this.forma;
+    }
+    
+    /**
+     * Setea forma del dluce
+     * @param forma entero representativo de la forma
+     */
+    public void setForma(int forma){
+        this.forma = forma;
+    }
+    
+    /**
      * Devuelve una forma aleatoria a traves de un int representativo
      * @return int representativo de la forma del dulce
      */
     public static int formaRamdon(){
         int numeroAleatorio = (int)(Math.random()*5+1);
         return numeroAleatorio;
-    }
-    
-    /**
-     * Retorna forma del dulce
-     * @return int representativo de la forma
-     */
-    public int getForma(){
-        return this.forma;
     }
     
 }

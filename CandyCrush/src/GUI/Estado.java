@@ -1,5 +1,6 @@
 /*
  * Esta clase se encarga de graficar continuamente los momentos del juego
+ * Está diseñado principalmente para ejecutar en repl
  */
 package GUI;
 
@@ -9,16 +10,14 @@ import Game.Partida;
 import Game.Tablero;
 
 public class Estado {
-
     //Atributos
     private static final String linea = "★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★",
-     paddinLeft  = "★                ", paddinRight = "                ★", lineaVacia = paddinLeft + "                               " + paddinRight;
+        paddinLeft  = "★                ", paddinRight = "                ★", lineaVacia = paddinLeft + "                               " + paddinRight;
 
     //No permite crear objetos
     private Estado() {
     }
 
-//Methods of Estado
     /**
      * Se encarga de dibujar cada cambio en el tablero, en los turnos y en las
      * vidas durante el juego
@@ -30,7 +29,7 @@ public class Estado {
         Menu.nextPage();
         //Estructura similar al html para estar familiarizados
         header();
-        aside(j);
+        section(j);
         tablero(t);
         footer(n, p);
     }
@@ -40,7 +39,7 @@ public class Estado {
        lineaVacia, linea);
     }
 
-    private static void aside(Jugador j) {
+    private static void section(Jugador j) {
         System.out.printf("   %s   %s   %s\n%s\n", j.getNombre(), "♥ = " + j.getVidasRestantes(), "Movimientos restantes = " + j.getNumeroMovimientos(),
           linea);
     }

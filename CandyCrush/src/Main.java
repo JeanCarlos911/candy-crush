@@ -1,11 +1,9 @@
 import GUI.Menu;
 
-//propuestas simbolos dulces ★ ✦ ◈ ✴ ❄
-
 public class Main{
     
     /**
-     * Main method
+     * Metodo main
      * @param args 
      */
     public static void main(String args[]){

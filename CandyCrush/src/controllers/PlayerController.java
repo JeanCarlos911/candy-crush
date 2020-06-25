@@ -49,16 +49,16 @@ public class PlayerController {
      */
     public void setPosicion(){
 
-        System.out.println("Ingrese el valor de x1: ");
+        System.out.print("Ingrese el valor de x1: ");
         this.xi = this.in.nextInt();
             
-        System.out.println("Ingrese el valor de y1: ");
+        System.out.print("Ingrese el valor de y1: ");
         this.yi = this.in.nextInt();
         
-        System.out.println("Ingrese el valor de x2: ");
+        System.out.print("Ingrese el valor de x2: ");
         this.xf = this.in.nextInt();
             
-        System.out.println("Ingrese el valor de y2: ");
+        System.out.print("Ingrese el valor de y2: ");
         this.yf = this.in.nextInt();
 
 

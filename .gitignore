@@ -26,6 +26,8 @@ hs_err_pid*
 *.xml
 *.mf
 *.properties
+*.netbeans_update_resources
+*.netbeans_automatic_build
 
 # Repl
 Main.java

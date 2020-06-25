@@ -11,8 +11,8 @@ import Game.Tablero;
 
 public class Estado {
     //Atributos
-    private static final String linea = "★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★",
-        paddinLeft  = "★                ", paddinRight = "                ★", lineaVacia = paddinLeft + "                               " + paddinRight;
+    private static final String linea = Menu.getMarginLeft() + "★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★",
+        paddinLeft  = Menu.getMarginLeft() + "★                ", paddinRight = "                ★", lineaVacia = paddinLeft + "                               " + paddinRight;
 
     //No permite crear objetos
     private Estado() {
@@ -40,7 +40,7 @@ public class Estado {
     }
 
     private static void section(Jugador j) {
-        System.out.printf("   %s   %s   %s\n%s\n", j.getNombre(), "♥ = " + j.getVidasRestantes(), "Movimientos restantes = " + j.getNumeroMovimientos(),
+        System.out.printf("   %s   %s   %s\n%s\n", Menu.getMarginLeft() + j.getNombre(), "♥ = " + j.getVidasRestantes(), "Movimientos restantes = " + j.getNumeroMovimientos(),
           linea);
     }
 
@@ -64,8 +64,8 @@ public class Estado {
     }
 
     private static void footer(Nivel n, Partida p) {
-        System.out.printf("%s\n   %s   %s\n%s\n\n\n",
-                linea, "puntuación objetivo = " + n.getPuntuacionObjetivo(), "puntuación acumulada = " + p.getPuntuacionAcumulada(),
+        System.out.printf("%s\n   %s   %s\n%s\n\n",
+                linea, Menu.getMarginLeft() + "puntuación objetivo = " + n.getPuntuacionObjetivo(), "puntuación acumulada = " + p.getPuntuacionAcumulada(),
                 linea);
     }
 

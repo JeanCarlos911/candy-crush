@@ -144,7 +144,7 @@ public class Tablero {
                 contadorDulces ++;
             }else{
                 if(contadorDulces > 2){
-                    return new int[]{contadorDulces, fila, columna + 1, 0};
+                    return new int[]{contadorDulces, fila, columna, 0};
                 }else{
                     contadorDulces = 1;
                 }
@@ -167,7 +167,7 @@ public class Tablero {
                 contadorDulces ++;
             }else{
                 if(contadorDulces > 2){
-                    return new int[]{contadorDulces, fila + 1, columna, 1};
+                    return new int[]{contadorDulces, fila, columna, 1};
                 }else{
                     contadorDulces = 1;
                 }
@@ -209,13 +209,12 @@ public class Tablero {
      * Se encarga de la gravedad característica del candy crush cuando se elimina algún dulces
      */
     private void caerDulces(){
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i < 10; i++){
             for(int fila = 0; fila < 8; fila++){
                 for(int columna = 0; columna < 9; columna++){
-                    if(this.getDulce(fila, columna).getForma() != 0 && this.getDulce(fila+1, columna).getForma() == 0){
+                    if(matriz[fila][columna].getForma() != 0 && matriz[fila + 1][columna].getForma() == 0){
                         this.matriz[fila+1][columna].setForma(matriz[fila][columna].getForma());
                         this.matriz[fila][columna].setForma(0);
-                        this.llenarDulces();
                     }
                 }
             }
@@ -241,7 +240,7 @@ public class Tablero {
      */
     public void moverDulce(int[] dato){
         int formaA = this.getDulce(dato[0], dato[1]).getForma();
-        int formaB = this.getDulce(dato[2],dato[3]).getForma();
+        int formaB = this.getDulce(dato[2], dato[3]).getForma();
 
         this.matriz[dato[0]][dato[1]].setForma(formaB);
         this.matriz[dato[2]][dato[3]].setForma(formaA);

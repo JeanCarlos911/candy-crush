@@ -73,8 +73,7 @@ public class Partida {
      */
     public void evaluarPerder() {
         if(this.puntuacionAcumulada<nivel.getPuntuacionObjetivo()){
-            System.out.println("No hay vidas suficientes ni turnos para continuar jugando y no alcanzó la meta establecida\n"
-                    + "     ¡ HAS PERDIDO !");
+            Estado.perder();
         }
         Menu.finalizar();
     }
@@ -86,8 +85,16 @@ public class Partida {
      */
     public boolean evaluarGanar() {
         if(this.puntuacionAcumulada>=nivel.getPuntuacionObjetivo()){
-            System.out.println("Superaste el único nivel desarrollado hasta el momento\n"
-                    + "     ¡ HAS GANADO !");
+            System.out.println("\n\n\n\n");
+            for(int i=0; i<100; i++){
+                System.out.print("-");
+            }
+            System.out.println("\n\n\t\tSuperaste el único nivel desarrollado hasta el momento\n"
+                         + "\t\t\t\t    ¡ HAS GANADO !\n");
+            for(int i=0; i<100; i++){
+                System.out.print("-");
+            }
+            System.out.println();
             return true;
         }else{
             return false;

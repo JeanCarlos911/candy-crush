@@ -24,6 +24,11 @@ public class PlayerController {
         return this.posiciones;
     }
     
+    public int[] getPosiciones(int i){
+        int[] inversa = new int[]{(xf-1),(yf-1),(xi-1),(yi-1)};
+        return inversa;
+    }
+    
     /**
      * Este metodo verifica el movimiento insertado por el jugador
      * @param xi x inicial

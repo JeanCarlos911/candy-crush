@@ -44,13 +44,13 @@ public class Partida {
                 if(evaluarGanar()==true){
                     Menu.finalizar();
                     break;
-            }else{
+                }
+            }else {
+                tablero.moverDulce(controlador.getPosiciones(-1));
                 pedirEntrada();
             }
         }
-            
-            
-        }
+         
         evaluarPerder();
     }
     

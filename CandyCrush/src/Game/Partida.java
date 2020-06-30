@@ -38,9 +38,9 @@ public class Partida {
             controlador.setPosicion();
             tablero.moverDulce(controlador.getPosiciones());
             tablero.setPuntuacion(0);
+            jugador.restarMovimientos();
             if(tablero.actualizarTablero()){
                 this.puntuacionAcumulada += tablero.getPuntuacion();
-                jugador.restarMovimientos();
                 if(evaluarGanar()==true){
                     Menu.finalizar();
                     break;

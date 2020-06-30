@@ -91,6 +91,8 @@ public class Estado {
                 return "✴";
             case 5:
                 return "❄";
+            case 6:
+                return "®";
             default:
                 return " ";
         }

@@ -34,6 +34,16 @@ public class Estado {
         footer(n, p);
     }
 
+    /**
+     * Ventana perder (consola)
+     */
+    public static void perder(){
+        System.out.println(linea);
+        System.out.println("                    No hay vidas suficientes ni turnos para continuar jugando y no alcanzó la meta establecida\n"
+                    + "                         ¡ HAS PERDIDO !");
+        System.out.println(linea);
+    }
+    
     private static void header(){
       System.out.printf("%s\n%s\n%s    %s    %s\n%s\n%s\n", linea, lineaVacia, paddinLeft,"❄ ❄ ❄ CANDY CRUSH ❄ ❄ ❄", paddinRight,
        lineaVacia, linea);

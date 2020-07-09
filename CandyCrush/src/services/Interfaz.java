@@ -1,4 +1,4 @@
-package services;
+package app.service;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -15,9 +15,9 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-public class Graphic{
+public class Interfaz{
     
-    private Graphic(){
+    private Interfaz(){
     }
     
     /**
@@ -76,13 +76,14 @@ public class Graphic{
     /**
      * Este metodo retorna un icono
      *
+     * @param o ventana o frame que requiere la imagen
      * @param ruta ruta del icono
      * @param width ancho de la imagen
      * @param height alto de la imagen
-     * @return icono con propiedades dadas
+     * @return icono
      **/
-    public Icon icono(String ruta, int width, int height){
-        ImageIcon iIcono = new ImageIcon(getClass().getResource(ruta));
+    public static Icon icono(Object o, String ruta, int width, int height){
+        ImageIcon iIcono = new ImageIcon(o.getClass().getResource(ruta));
         Icon icono = new ImageIcon(iIcono.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
         return icono;
     }
@@ -94,7 +95,7 @@ public class Graphic{
      * @param alto alto de la ventana
      * @param titulo titulo de la ventana
      */
-    public static void crearVentana(JFrame frame, int ancho, int alto, String titulo){
+    public static void frame(JFrame frame, int ancho, int alto, String titulo){
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setTitle(titulo);
         frame.setSize(ancho, alto);

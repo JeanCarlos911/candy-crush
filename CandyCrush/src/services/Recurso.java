@@ -1,4 +1,4 @@
-package services;
+package app.service;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -6,16 +6,16 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-public class Resource {
+public class Recurso {
 
     private final Color cyan, cyanOscuro, verdeClaro, verde, verdePastel, morado, moradoClaro;
     private final Font fuenteTitulo, fuenteVersion, fuenteOpcion, fuenteTituloJuego, fuenteSubtitulo;
     private final Cursor cMano;
     private final Border borderGris, borderNegro;
     
-    static private Resource servicio;
+    static private Recurso servicio;
     
-    private Resource(){
+    private Recurso(){
     //Paletas de colores----------------------------------------------------------
         //paleta estándar
         cyan = new Color(72, 206, 247);
@@ -46,6 +46,7 @@ public class Resource {
         borderGris = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true);
     }
     
+
     public Color getColorCyan(){
         return cyan;
     }
@@ -105,12 +106,10 @@ public class Resource {
     public Border getBorderNegro(){
         return borderNegro;
     }
-    
-    public static Resource getService(){
-        if(servicio == null){
-            servicio = new Resource();
-        }
+
+    public static Recurso getService(){
+        if(servicio == null)
+            servicio = new Recurso();
         return servicio;
     }
-    
 }

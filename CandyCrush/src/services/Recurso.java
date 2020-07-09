@@ -1,4 +1,4 @@
-package app.service;
+package services;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -13,7 +13,7 @@ public class Recurso {
     private final Cursor cMano;
     private final Border borderGris, borderNegro;
     
-    static private Recurso servicio;
+    private static Recurso servicio;
     
     private Recurso(){
     //Paletas de colores----------------------------------------------------------
@@ -46,7 +46,6 @@ public class Recurso {
         borderGris = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true);
     }
     
-
     public Color getColorCyan(){
         return cyan;
     }
@@ -112,4 +111,5 @@ public class Recurso {
             servicio = new Recurso();
         return servicio;
     }
+    
 }

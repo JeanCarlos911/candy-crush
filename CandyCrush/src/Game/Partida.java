@@ -1,7 +1,6 @@
 package Game;
 
-import GUI.Estado;
-import GUI.Menu;
+import GUI.Main.MainTemplate;
 import controllers.PlayerController;
 
 public class Partida {
@@ -34,7 +33,7 @@ public class Partida {
      */
     public void pedirEntrada() {
         while (this.jugador.getVidasRestantes() > 0 || this.jugador.getNumeroMovimientos() > 0) {
-            Estado.actualizarDibujoJuego(this, this.jugador, this.tablero, this.nivel);
+            //Estado.actualizarDibujoJuego(this, this.jugador, this.tablero, this.nivel);
             controlador.setPosicion();
             tablero.moverDulce(controlador.getPosiciones());
             tablero.setPuntuacion(0);
@@ -42,7 +41,7 @@ public class Partida {
             if(tablero.actualizarTablero()){
                 this.puntuacionAcumulada += tablero.getPuntuacion();
                 if(evaluarGanar()==true){
-                    Menu.finalizar();
+                    //MainTemplate.finalizar();
                     break;
                 }
             }else {
@@ -73,9 +72,9 @@ public class Partida {
      */
     public void evaluarPerder() {
         if(this.puntuacionAcumulada<nivel.getPuntuacionObjetivo()){
-            Estado.perder();
+            //Estado.perder();
         }
-        Menu.finalizar();
+        //MainTemplate.finalizar();
     }
 
     /**

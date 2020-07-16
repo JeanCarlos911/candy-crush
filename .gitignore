@@ -28,9 +28,4 @@ hs_err_pid*
 *.properties
 *.netbeans_update_resources
 *.netbeans_automatic_build
-
-# Repl
-Main.java
-/016-Despliegue1/nbproject/private/
-/016-Despliegue1/build/
 /CandyCrush/build/

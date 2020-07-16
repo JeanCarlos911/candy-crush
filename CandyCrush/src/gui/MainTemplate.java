@@ -44,9 +44,9 @@ public class MainTemplate extends JFrame{
     
     private void cargarRecursos(){
         //iconos
-        i_background = getIcon("/resources/main/background.png", 1199, 720);
-        i_jugarOff = getIcon("/resources/main/bt_jugar_off.png", 392, 105);
-        i_jugarOn = getIcon("/resources/main/bt_jugar_on.png", 392, 105);
+        i_background = getIcon("../resources/main/background.png", 1199, 720);
+        i_jugarOff = getIcon("../resources/main/bt_jugar_off.png", 392, 105);
+        i_jugarOn = getIcon("../resources/main/bt_jugar_on.png", 392, 105);
     }
     
     private void crearPaneles(){

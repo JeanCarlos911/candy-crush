@@ -1,6 +1,6 @@
 package ui;
 
-import Game.Partida;
+import game.Partida;
 import java.util.Scanner;
 
 public class Menu {

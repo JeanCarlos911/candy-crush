@@ -4,10 +4,10 @@
  */
 package ui;
 
-import Game.Jugador;
-import Game.Nivel;
-import Game.Partida;
-import Game.Tablero;
+import game.Jugador;
+import game.Nivel;
+import game.Partida;
+import game.Tablero;
 
 public class Estado {
     //Atributos

@@ -1,4 +1,4 @@
-package GUI;
+package ui;
 
 import Game.Partida;
 import java.util.Scanner;

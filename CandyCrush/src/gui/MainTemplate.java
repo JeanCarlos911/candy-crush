@@ -1,13 +1,10 @@
-package GUI.Main;
+package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Icon;
 import javax.swing.JButton;
-
-import services.Interfaz;
-import services.Recurso;
 
 public class MainTemplate extends JFrame{
     

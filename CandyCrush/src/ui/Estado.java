@@ -2,7 +2,7 @@
  * Esta clase se encarga de graficar continuamente los momentos del juego
  * Está diseñado principalmente para ejecutar en repl
  */
-package GUI;
+package ui;
 
 import Game.Jugador;
 import Game.Nivel;

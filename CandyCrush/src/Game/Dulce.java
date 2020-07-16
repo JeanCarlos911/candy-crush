@@ -1,4 +1,4 @@
-package Game;
+package game;
 
 public class Dulce {
     //Atributos
@@ -33,7 +33,7 @@ public class Dulce {
      * @return int representativo de la forma del dulce
      */
     public static int formaRamdon(){
-        int numeroAleatorio = (int)(Math.random()*5+1);
+        int numeroAleatorio = (int)(Math.random()*6+1);
         return numeroAleatorio;
     }
     

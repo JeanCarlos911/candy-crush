@@ -6,110 +6,42 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-public class Recurso {
+public final class Recurso {
 
-    private final Color cyan, cyanOscuro, verdeClaro, verde, verdePastel, morado, moradoClaro;
-    private final Font fuenteTitulo, fuenteVersion, fuenteOpcion, fuenteTituloJuego, fuenteSubtitulo;
-    private final Cursor cMano;
-    private final Border borderGris, borderNegro;
-    
-    private static Recurso servicio;
-    
-    private Recurso(){
-    //Paletas de colores----------------------------------------------------------
+    public static final Color 
+    //Paletas de colores--------------------------------------------------------
         //paleta estándar
-        cyan = new Color(72, 206, 247);
-        cyanOscuro = new Color(70, 147, 171);
+        COLOR_CYAN = new Color(72, 206, 247),
+        COLOR_CYAN_OSCURO = new Color(70, 147, 171),
         
         //paleta verde pastel complementario
-        verdeClaro = new Color(193, 255, 171);
-        verde = new Color(122, 179, 102);
-        verdePastel = new Color(212, 255, 196);
-        morado = new Color(179, 84, 167);
-        moradoClaro = new Color(255, 171, 245);
-        
-    //Fuentes---------------------------------------------------------------------
+        COLOR_VERDE_CLARO = new Color(193, 255, 171),
+        COLOR_VERDE = new Color(122, 179, 102),
+        COLOR_VERDE_PASTEL = new Color(212, 255, 196),
+        COLOR_MORADO = new Color(179, 84, 167),
+        COLOR_MORADO_CLARO = new Color(255, 171, 245);
+    
+    public static final Font 
+    //Fuentes-------------------------------------------------------------------
         //fuentes estándar
-        fuenteTitulo = new Font("Gill Sans MT Condensed", Font.PLAIN, 64);
-        fuenteSubtitulo = new Font("Gill Sans MT Condensed", Font.PLAIN, 32);
-        fuenteTituloJuego = new Font("Imprint MT Shadow", Font.PLAIN, 72);
-        fuenteVersion = new Font("Arial", Font.PLAIN, 14);
-        fuenteOpcion = new Font("Arial Narrow", Font.PLAIN, 18);
-        
-    //Cursores
+        FUENTE_TITULO = new Font("Gill Sans MT Condensed", Font.PLAIN, 64),
+        FUENTE_SUBTITULO = new Font("Gill Sans MT Condensed", Font.PLAIN, 32),
+        FUENTE_TITULO_JUEGO = new Font("Imprint MT Shadow", Font.PLAIN, 72),
+        FUENTE_VERSION = new Font("Arial", Font.PLAIN, 14),
+        FUENTE_OPCION = new Font("Arial Narrow", Font.PLAIN, 18);
+    
+    public static final Cursor
+    //Cursores------------------------------------------------------------------
         //cursores estándar
-        cMano = new Cursor(Cursor.HAND_CURSOR);
-        
-    //Borders
+        CURSOR_MANO = new Cursor(Cursor.HAND_CURSOR);;
+    
+    public static final Border
+    //Bordes--------------------------------------------------------------------
         //bordes estándar
-        borderNegro = BorderFactory.createLineBorder(Color.black, 2, true);
-        borderGris = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true);
-    }
+        BORDE_NEGRO = BorderFactory.createLineBorder(Color.black, 2, true),
+        BORDE_GRIS = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true);
     
-    public Color getColorCyan(){
-        return cyan;
-    }
-    
-    public Color getColorCyanOscuro(){
-        return cyanOscuro;
-    }
-    
-    public Color getColorVerdeClaro(){
-        return verdeClaro;
-    }
-    
-    public Color getColorVerde(){
-        return verde;
-    }
-    
-    public Color getColorVerdePastel(){
-        return verdePastel;
-    }
-    
-    public Color getColorMorado(){
-        return morado;
-    }
-    
-    public Color getColorMoradoClaro(){
-        return moradoClaro;
-    }
-    
-    public Font getFuenteTitulo(){
-        return fuenteTitulo;
-    }
-    
-    public Font getFuenteSubtitulo(){
-        return fuenteSubtitulo;
-    }
-    
-    public Font getFuenteTituloJuego(){
-        return fuenteTituloJuego;
-    }
-    
-    public Font getFuenteVersion(){
-        return fuenteVersion;
-    }
-    
-    public Font getFuenteOpcion(){
-        return fuenteOpcion;
-    }
-    
-    public Cursor getCursorMano(){
-        return cMano;
-    }
-    
-    public Border getBorderGris(){
-        return borderGris;
-    }
-    
-    public Border getBorderNegro(){
-        return borderNegro;
-    }
-
-    public static Recurso getService(){
-        if(servicio == null)
-            servicio = new Recurso();
-        return servicio;
+    private Recurso(){
     }
     
 }

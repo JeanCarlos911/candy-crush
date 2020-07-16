@@ -1,10 +1,19 @@
 package gui;
 
+//java
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Icon;
 import javax.swing.JButton;
+
+//libraries personalizadas <<De esta manera no se precargan metodos estaticos que no se usarán y se ahorra memoria>>
+import static gui.Interfaz.getIcon;
+import static gui.Interfaz.getFrame;
+import static gui.Interfaz.getPanel;
+import static gui.Interfaz.getLabel;
+import static gui.Interfaz.getButton;
+import static gui.Recurso.CURSOR_MANO;
 
 public class MainTemplate extends JFrame{
     
@@ -14,16 +23,15 @@ public class MainTemplate extends JFrame{
     
     //Declaracion de objetos decoradores
     private Icon i_background, i_jugarOn, i_jugarOff;
-    private JLabel l_background, l_jugarOn, l_jugarOff;
+    
+    //Declaracion de componentes
+    private JLabel l_background;
     
     //Declaracion de servicios
-    private Recurso recurso;
     private MainComponent mainComponent;
     
     public MainTemplate(MainComponent mainComponent){
         this.mainComponent = mainComponent;
-        
-        recurso = Recurso.getService();
         
         cargarRecursos();
         
@@ -31,32 +39,35 @@ public class MainTemplate extends JFrame{
         crearBotones();
         crearDecoracion();
         
-        Interfaz.getFrame(this, 1190, 740, "Candy Crush");
+        getFrame(this, 1190, 740, "Candy Crush");
     }
     
     private void cargarRecursos(){
-        //Icons
-        i_background = Interfaz.getIcon(this, "/lib/main/background.png", 1199, 720);
-        i_jugarOff = Interfaz.getIcon(this, "/lib/main/bt_jugar_off.png", 392, 105);
-        i_jugarOn = Interfaz.getIcon(this, "/lib/main/bt_jugar_on.png", 392, 105);
+        //iconos
+        i_background = getIcon("/resources/main/background.png", 1199, 720);
+        i_jugarOff = getIcon("/resources/main/bt_jugar_off.png", 392, 105);
+        i_jugarOn = getIcon("/resources/main/bt_jugar_on.png", 392, 105);
     }
     
     private void crearPaneles(){
-        
         //panel que contiene todo
-        p_Total = Interfaz.getPanel(0, 0, 1190, 720);
+        p_Total = getPanel(0, 0, 1190, 720);
         add(p_Total);
     }
     
     private void crearDecoracion(){
-        //Imagen fondo Main
-        l_background = Interfaz.getLabelIcon(i_background, 0, 0);
+        //Imagen fondo
+        l_background = getLabel(i_background, 0, 0);
         p_Total.add(l_background);
     }
     
     private void crearBotones(){
+    //por ahora usaré labels como botones mientras sigo investigando un poco más
         //Boton jugar
-        //Revisando como hacerlo de la mejor manera... bt_jugar = Interfaz.getJButtonIcon(i_jugarOff, 0, 0, recurso.getCursorMano(), "c");
+        bt_jugar = getButton(i_jugarOff, 660, 260, CURSOR_MANO);
+        bt_jugar.addActionListener(mainComponent);
+        p_Total.add(bt_jugar);
+        
     }
 
     public JButton getBJugar(){
@@ -65,6 +76,7 @@ public class MainTemplate extends JFrame{
 
     public void closeWindow(){
         setVisible(false);
+        System.exit(0);
     }
 
     public void setVisibilidad(boolean b) {

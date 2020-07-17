@@ -1,6 +1,5 @@
 package game;
 
-import gui.MainTemplate;
 import controllers.PlayerController;
 
 public class Partida {

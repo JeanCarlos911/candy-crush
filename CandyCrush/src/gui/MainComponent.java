@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 public class MainComponent implements ActionListener{
     
+    //Declaración de interfaz
     private MainTemplate mainTemplate;
     
     public MainComponent(){

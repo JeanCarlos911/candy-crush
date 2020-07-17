@@ -73,13 +73,18 @@ public final class Interfaz{
         frame.setVisible(true);
     }
     
-    public static JButton getButton(Icon icono, int x, int y, Cursor cursor){
+    public static JButton getButton(Icon icono, int x, int y){
         JButton button = new JButton();
         button.setContentAreaFilled(false);
         button.setBorder(null);
         button.setIcon(icono);
         button.setSize(icono.getIconWidth(), icono.getIconHeight());
         button.setLocation(x, y);
+        return button;
+    }
+    
+    public static JButton getButton(Icon icono, int x, int y, Cursor cursor){
+        JButton button = getButton(icono, x, y);
         button.setCursor(cursor);
         return button;
     }

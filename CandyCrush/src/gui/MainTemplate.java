@@ -18,17 +18,17 @@ import static gui.Recurso.CURSOR_MANO;
 public class MainTemplate extends JFrame{
     
     //Declaracion de objetos graficos
-    private JPanel p_Total;
-    private JButton bt_jugar;
+    private JPanel p_total;
     
     //Declaracion de objetos decoradores
-    private Icon i_background, i_jugarOn, i_jugarOff;
+    private Icon i_background, i_jugarOn, i_jugarOff, i_guardar;
     
     //Declaracion de componentes
     private JLabel l_background;
+    private JButton bt_jugar, bt_guardar;
     
-    //Declaracion de servicios
-    private MainComponent mainComponent;
+    //Declaracion de administrador de la interfaz
+    private final MainComponent mainComponent;
     
     public MainTemplate(MainComponent mainComponent){
         this.mainComponent = mainComponent;
@@ -45,28 +45,32 @@ public class MainTemplate extends JFrame{
     private void cargarRecursos(){
         //iconos
         i_background = getIcon("/resources/main/background.png", 1199, 720);
-        i_jugarOff = getIcon("/resources/main/bt_jugar_off.png", 392, 105);
-        i_jugarOn = getIcon("/resources/main/bt_jugar_on.png", 392, 105);
+        i_jugarOff   = getIcon("/resources/main/bt_jugar_off.png", 392, 105);
+        i_jugarOn    = getIcon("/resources/main/bt_jugar_on.png", 392, 105);
+        i_guardar    = getIcon("/resources/main/bt_guardar.png", 457, 108);
     }
     
     private void crearPaneles(){
         //panel que contiene todo
-        p_Total = getPanel(0, 0, 1190, 720);
-        add(p_Total);
+        p_total = getPanel(0, 0, 1190, 720);
+        add(p_total);
     }
     
     private void crearDecoracion(){
         //Imagen fondo
         l_background = getLabel(i_background, 0, 0);
-        p_Total.add(l_background);
+        p_total.add(l_background);
     }
     
     private void crearBotones(){
     //por ahora usaré labels como botones mientras sigo investigando un poco más
         //Boton jugar
-        bt_jugar = getButton(i_jugarOff, 660, 260, CURSOR_MANO);
+        bt_jugar = getButton(i_jugarOff, 680, 260, CURSOR_MANO);
         bt_jugar.addActionListener(mainComponent);
-        p_Total.add(bt_jugar);
+        p_total.add(bt_jugar);
+        
+        bt_guardar = getButton(i_guardar, 660, 390);
+        p_total.add(bt_guardar);
         
     }
 

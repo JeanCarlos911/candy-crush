@@ -10,7 +10,7 @@ public final class Recurso {
 
     public static final Color 
     //Paletas de colores--------------------------------------------------------
-        //estándat
+        //estandat
         BLACK = new Color(0, 0, 0),
             
         //especiales
@@ -28,7 +28,7 @@ public final class Recurso {
     
     public static final Font 
     //Fuentes-------------------------------------------------------------------
-        //fuentes estándar
+        //fuentes estandar
         FUENTE_TITULO = new Font("Gill Sans MT Condensed", Font.PLAIN, 64),
         FUENTE_SUBTITULO = new Font("Gill Sans MT Condensed", Font.PLAIN, 32),
         FUENTE_TITULO_JUEGO = new Font("Imprint MT Shadow", Font.PLAIN, 72),
@@ -37,12 +37,12 @@ public final class Recurso {
     
     public static final Cursor
     //Cursores------------------------------------------------------------------
-        //cursores estándar
+        //cursores estandar
         CURSOR_MANO = new Cursor(Cursor.HAND_CURSOR);;
     
     public static final Border
     //Bordes--------------------------------------------------------------------
-        //bordes estándar
+        //bordes estandar
         BORDE_NEGRO = BorderFactory.createLineBorder(Color.black, 2, true),
         BORDE_GRIS = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true);
     

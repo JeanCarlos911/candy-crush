@@ -29,3 +29,4 @@ hs_err_pid*
 *.netbeans_update_resources
 *.netbeans_automatic_build
 /CandyCrush/build/
+/CandyCrush/src/bin

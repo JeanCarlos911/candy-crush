@@ -10,9 +10,14 @@ public final class Recurso {
 
     public static final Color 
     //Paletas de colores--------------------------------------------------------
-        //paleta estándar
+        //estándat
+        BLACK = new Color(0, 0, 0),
+            
+        //especiales
         COLOR_CYAN = new Color(72, 206, 247),
         COLOR_CYAN_OSCURO = new Color(70, 147, 171),
+        OCRE_OSCURO = new Color(169, 105, 0),
+        MOSTAZA = new Color(255, 225, 0),
         
         //paleta verde pastel complementario
         COLOR_VERDE_CLARO = new Color(193, 255, 171),

@@ -64,13 +64,19 @@ public final class Interfaz{
         return icono;
     }
     
-    public static void getFrame(JFrame frame, int ancho, int alto, String titulo){
+    public static void setFrame(JFrame frame, int ancho, int alto, String titulo){
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setTitle(titulo);
         frame.setSize(ancho, alto);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+    
+    public static JFrame getFrame(int ancho, int alto, String titulo){
+        JFrame frame = new JFrame();
+        setFrame(frame, ancho, alto, titulo);
+        return frame;
     }
     
     public static JButton getButton(Icon icono, int x, int y, Cursor cursor){
@@ -84,18 +90,15 @@ public final class Interfaz{
         return button;
     }
     
-    public static JButton getButton(String texto, int x, int y, int ancho, int alto, Cursor cursor, Icon imagen, Font fuente, Color colorFondo,
+    public static JButton getButton(String texto, int x, int y, int ancho, int alto, Cursor cursor, Icon icono, Font fuente, Color colorFondo,
             Color colorFuente,Border borde, String direccion, boolean esSolido){
         
-        JButton button= new JButton(texto);
+        JButton button = getButton(icono, x, y, cursor);
+        button.setText(texto);
         button.setSize(ancho, alto);
-        button.setLocation(x, y);
-        button.setFocusable(false);
-        button.setCursor(cursor);
         button.setFont(fuente);
         button.setBackground(colorFondo);
         button.setForeground(colorFuente);
-        button.setIcon(imagen);
         button.setBorder(borde);
         button.setContentAreaFilled(esSolido);
         switch(direccion){
@@ -111,25 +114,4 @@ public final class Interfaz{
         return button;
     }
     
-    public static JButton getButton(Icon icono, int x, int y, Cursor cursor, String direccion){
-        JButton button = new JButton();
-        button.setSize(icono.getIconWidth(), icono.getIconHeight());
-        button.setLocation(x, y);
-        button.setFocusable(false);
-        button.setCursor(cursor);
-        button.setIcon(icono);
-        button.setContentAreaFilled(true);
-        switch(direccion){
-            case "l":
-                button.setHorizontalAlignment(SwingConstants.LEFT);
-                break;
-            case "r":
-                button.setHorizontalAlignment(SwingConstants.RIGHT);
-                break;    
-            default:
-                break;
-        }
-        return button;
-    }
-        
 }

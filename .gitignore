@@ -30,3 +30,5 @@ hs_err_pid*
 *.netbeans_automatic_build
 /CandyCrush/build/
 /CandyCrush/src/bin
+/CandyCrush/nbproject/private/
+/Model/Diseño Interfaces.epgz

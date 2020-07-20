@@ -1,4 +1,5 @@
 import gui.Ventana;
+import javax.swing.JOptionPane;
 
 public class Main{
     
@@ -7,7 +8,10 @@ public class Main{
      * @param args 
      */
     public static void main(String args[]){
-        Ventana crearVentana = new Ventana();
+
+        /*String nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre: ","Nombre jugador",JOptionPane.QUESTION_MESSAGE);
+        Partida partida = new Partida(nombre);*/
+        Ventana menu = new Ventana();
     }
     
 }

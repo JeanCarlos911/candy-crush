@@ -2,15 +2,13 @@ package gui;
 
 import javax.swing.JFrame;
 
-public class Ventana{
+public class Ventana extends JFrame{
     
-    private JFrame frame;
-    private static Ventana ventana;
-    //ventanas
+    
+    private static final long serialVersionUID = 1L;
     
     public Ventana(){
-        //Establece menu del juego como ventana inicial
-        frame = (new MainComponent()).getFrame();//Inicia menu del juego
+        
     }
     
 }

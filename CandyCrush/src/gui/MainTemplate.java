@@ -8,12 +8,12 @@ import javax.swing.Icon;
 import javax.swing.JButton;
 
 //libraries personalizadas <<De esta manera no se precargan metodos estaticos que no se usarán y se ahorra memoria>>
-import static gui.Interfaz.getIcon;
 import static gui.Interfaz.setFrame;
 import static gui.Interfaz.getPanel;
 import static gui.Interfaz.getLabel;
 import static gui.Interfaz.getButton;
 import static gui.Recurso.CURSOR_MANO;
+import javax.swing.ImageIcon;
 
 public class MainTemplate extends JFrame{
     
@@ -32,6 +32,7 @@ public class MainTemplate extends JFrame{
     
     public MainTemplate(MainComponent mainComponent){
         this.mainComponent = mainComponent;
+        
         cargarRecursos();     
         crearPaneles();
         crearBotones();
@@ -42,10 +43,10 @@ public class MainTemplate extends JFrame{
     
     private void cargarRecursos(){
         //iconos
-        i_background = getIcon("/resources/main/background.png", 1199, 720);
-        i_jugarOff   = getIcon("/resources/main/btAjugarOff.png", 392, 105);
-        i_jugarOn    = getIcon("/resources/main/btJugarOn.png", 392, 105);
-        i_guardar    = getIcon("/resources/main/btGuardar.png", 457, 108);
+        i_background = new ImageIcon(getClass().getResource("/resources/main/background.png"));
+        i_jugarOff   = new ImageIcon("/resources/main/btJugarOff.png");
+        i_jugarOn    = new ImageIcon("/resources/main/btJugarOn.png");
+        i_guardar    = new ImageIcon("/resources/main/btGuardar.png");
     }
     
     private void crearPaneles(){

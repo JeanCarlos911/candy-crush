@@ -1,4 +1,3 @@
-
 import gui.Ventana;
 
 public class Main{

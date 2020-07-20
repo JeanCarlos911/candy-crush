@@ -32,9 +32,7 @@ public class MainTemplate extends JFrame{
     
     public MainTemplate(MainComponent mainComponent){
         this.mainComponent = mainComponent;
-        
-        cargarRecursos();
-        
+        cargarRecursos();     
         crearPaneles();
         crearBotones();
         crearDecoracion();

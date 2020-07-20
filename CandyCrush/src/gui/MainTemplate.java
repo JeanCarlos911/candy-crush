@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-//libraries personalizadas <<De esta manera no se precargan metodos estaticos que no se usarán y se ahorra memoria>>
+//libraries personalizadas <<De esta manera no se precargan metodos estaticos que no se usaran y se ahorra memoria>>
 import static gui.Interfaz.setFrame;
 import static gui.Interfaz.getPanel;
 import static gui.Interfaz.getLabel;
@@ -62,12 +62,12 @@ public class MainTemplate extends JFrame{
     }
     
     private void crearBotones(){
-    //por ahora usaré labels como botones mientras sigo investigando un poco más
         //Boton jugar
         bt_jugar = getButton(i_jugarOff, 680, 260, CURSOR_MANO);
         bt_jugar.addActionListener(mainComponent);
         p_total.add(bt_jugar);
         
+        //boton guardar
         bt_guardar = getButton(i_guardar, 660, 390,CURSOR_MANO);
         p_total.add(bt_guardar);
         

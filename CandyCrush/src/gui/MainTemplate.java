@@ -44,9 +44,9 @@ public class MainTemplate extends JFrame{
     private void cargarRecursos(){
         //iconos
         i_background = new ImageIcon(getClass().getResource("/resources/main/background.png"));
-        i_jugarOff   = new ImageIcon("/resources/main/btJugarOff.png");
-        i_jugarOn    = new ImageIcon("/resources/main/btJugarOn.png");
-        i_guardar    = new ImageIcon("/resources/main/btGuardar.png");
+        i_jugarOff   = new ImageIcon(getClass().getResource("/resources/main/btJugarOff.png"));
+        i_jugarOn    = new ImageIcon(getClass().getResource("/resources/main/btJugarOn.png"));
+        i_guardar    = new ImageIcon(getClass().getResource("/resources/main/btGuardar.png"));
     }
     
     private void crearPaneles(){
@@ -68,7 +68,7 @@ public class MainTemplate extends JFrame{
         p_total.add(bt_jugar);
         
         //boton guardar
-        bt_guardar = getButton(i_guardar, 660, 390,CURSOR_MANO);
+        bt_guardar = getButton(i_guardar, 660, 390, null);
         p_total.add(bt_guardar);
         
     }

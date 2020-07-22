@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Icon;
 import javax.swing.JButton;
-
 //libraries personalizadas <<De esta manera no se precargan metodos estaticos que no se usaran y se ahorra memoria>>
 import static gui.Interfaz.setFrame;
 import static gui.Interfaz.getPanel;
@@ -17,7 +16,9 @@ import javax.swing.ImageIcon;
 
 public class MainTemplate extends JFrame{
     
-    //Declaracion de objetos graficos
+    private static final long serialVersionUID = 1L;
+
+    // Declaracion de objetos graficos
     private JPanel p_total;
     
     //Declaracion de objetos decoradores
@@ -63,7 +64,7 @@ public class MainTemplate extends JFrame{
     
     private void crearBotones(){
         //Boton jugar
-        bt_jugar = getButton(i_jugarOff, 680, 260, CURSOR_MANO);
+        bt_jugar = getButton(i_jugarOff, 500, 260, CURSOR_MANO);
         bt_jugar.addActionListener(mainComponent);
         p_total.add(bt_jugar);
         

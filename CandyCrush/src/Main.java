@@ -1,5 +1,5 @@
-import gui.Ventana;
-import javax.swing.JOptionPane;
+//import gui.Ventana;
+import gui.components.AsideComponent.*;
 
 public class Main{
     
@@ -11,7 +11,9 @@ public class Main{
 
         /*String nombre = JOptionPane.showInputDialog(null, "Ingrese su nombre: ","Nombre jugador",JOptionPane.QUESTION_MESSAGE);
         Partida partida = new Partida(nombre);*/
-        Ventana menu = new Ventana();
+        //Ventana menu = new Ventana();
+        TestTemplate menu = new TestTemplate();
+        
     }
     
 }

@@ -4,7 +4,8 @@ public class Jugador {
     //Atributos
     private String nombre;
     private int vidasRestantes;
-    private int numeroMovimientos;
+    private int turnosRestantes;
+    private int puntaje;
     
     /**
      * Establece valores iniciales del jugador
@@ -13,7 +14,8 @@ public class Jugador {
     public Jugador(String nombre){
         this.nombre = nombre;
         this.vidasRestantes = 5;
-        this.numeroMovimientos = 50;
+        this.turnosRestantes = 50;
+        this.puntaje = 0;
     }
 
     /**
@@ -25,6 +27,13 @@ public class Jugador {
     }
 
     /**
+     * Resta la vida del jugador en 1
+     */
+    public void bajarVida(){
+        this.vidasRestantes --;
+    }
+
+    /**
      * Retorna nombre del jugador
      * @return String nombre del jugador
      */
@@ -33,30 +42,38 @@ public class Jugador {
     }
     
     /**
-     * Retorna numero de movimientos restantes del jugador
+     * Retorna numero de turnos restantes del jugador
      * @return int numero de movimientos restantes
      */
-    public int getNumeroMovimientos(){
-        return this.numeroMovimientos;
+    public int getTurnosRestantes(){
+        return this.turnosRestantes;
     }
     
     /**
-     * Resta la vida del jugador en 1
+     * Este metodo resta un  movimiento al jugador o vida según corresponda
      */
-    public void bajarVida(){
-        this.vidasRestantes --;
+    public void restarTurno(){
+        if(turnosRestantes > 0){
+            turnosRestantes --;
+        }else if(vidasRestantes > 0){
+            vidasRestantes --;
+            turnosRestantes += 49;
+        }
     }
 
     /**
-     * Este metodo resta un  movimiento al jugador o vida según corresponda
+     * Retorna puntaje del jugador
      */
-    public void restarMovimientos(){
-        if(numeroMovimientos > 0){
-            numeroMovimientos --;
-        }else if(vidasRestantes > 0){
-            numeroMovimientos += 49;
-            vidasRestantes --;
-        }
+    public int getPuntaje(){
+        return this.puntaje;
+    }
+
+    /**
+     * Suma el puntaje dado al jugador
+     * @param puntuacion puntaje obtenido por el jugador
+     */
+    public void sumarPuntaje(int puntuacion){
+        this.puntaje += puntuacion;
     }
 
 }

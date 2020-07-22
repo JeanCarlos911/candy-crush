@@ -10,15 +10,20 @@ public class Tablero {
      */
     public Tablero(){
         this.matriz = new Dulce[9][9];
+        generarTablero();
     }
 
+    public Dulce[][] getMatriz(){
+        return matriz;
+    }    
+    
     /**
      * Establece dulce en la posicion dada del tablero
      * @param fila fila del dulce a establecer
      * @param columna columna del dulce a establecer
      * @param dulce dulce que establecerá en la posicion dada
      */
-    public void setDulce(int fila,int columna,Dulce dulce){
+    public void setDulce(int fila,int columna, Dulce dulce){
         this.matriz[fila][columna] = dulce;
     }
     
@@ -57,6 +62,7 @@ public class Tablero {
                 this.setDulce(i, j, new Dulce(Dulce.formaRamdon()));          
             }
         }
+        organizar();
     }
 
     /**

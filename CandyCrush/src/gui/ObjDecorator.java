@@ -6,26 +6,29 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-public final class Recurso {
+public final class ObjDecorator {
 
     public static final Color 
     //Paletas de colores--------------------------------------------------------
         //estandat
         BLACK = new Color(0, 0, 0),
-            
-        //especiales
-        COLOR_CYAN = new Color(72, 206, 247),
-        COLOR_CYAN_OSCURO = new Color(70, 147, 171),
-        OCRE_OSCURO = new Color(169, 105, 0),
-        MOSTAZA = new Color(255, 225, 0),
+        RED = new Color(255, 0, 0),
         
         //paleta verde pastel complementario
-        COLOR_VERDE_CLARO = new Color(193, 255, 171),
-        COLOR_VERDE = new Color(122, 179, 102),
-        COLOR_VERDE_PASTEL = new Color(212, 255, 196),
-        COLOR_MORADO = new Color(179, 84, 167),
-        COLOR_MORADO_CLARO = new Color(255, 171, 245);
-    
+        VERDE_CLARO = new Color(193, 255, 171),
+        VERDE = new Color(122, 179, 102),
+        VERDE_PASTEL = new Color(212, 255, 196),
+        MORADO = new Color(179, 84, 167),
+        MORADO_CLARO = new Color(255, 171, 245),
+            
+        //especiales
+        CYAN = new Color(72, 206, 247),
+        CYAN_OSCURO = new Color(70, 147, 171),
+        OCRE_OSCURO = new Color(169, 105, 0),
+        MOSTAZA = new Color(255, 225, 0),
+        AZUL_GRIS_OSCURO = new Color(58, 117, 181),
+        AZUL_GRIS = new Color(82, 125, 181);
+        
     public static final Font 
     //Fuentes-------------------------------------------------------------------
         //fuentes estandar
@@ -38,7 +41,14 @@ public final class Recurso {
     public static final Cursor
     //Cursores------------------------------------------------------------------
         //cursores estandar
-        CURSOR_MANO = new Cursor(Cursor.HAND_CURSOR);;
+        CURSOR_DEFECTO = new Cursor(0),
+        CURSOR_CRUZ = new Cursor(1),
+        CURSOR_TEXTO = new Cursor(2),
+        CURSOR_ESPERAR = new Cursor(3),
+        CURSOR_N_RESIZE = new Cursor(8),
+        CURSOR_E_RESIZE = new Cursor(11),
+        CURSOR_MANO = new Cursor(12),
+        CURSOR_MOVER = new Cursor(13);
     
     public static final Border
     //Bordes--------------------------------------------------------------------
@@ -46,7 +56,7 @@ public final class Recurso {
         BORDE_NEGRO = BorderFactory.createLineBorder(Color.black, 2, true),
         BORDE_GRIS = BorderFactory.createLineBorder(Color.LIGHT_GRAY, 2, true);
     
-    private Recurso(){
+    private ObjDecorator(){
     }
     
 }

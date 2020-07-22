@@ -1,8 +1,10 @@
-package gui;
+package gui.ventanas.main;
+
+import gui.ventanas.Ventana;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainComponent implements ActionListener{
     
@@ -13,7 +15,7 @@ public class MainComponent implements ActionListener{
         this.mainTemplate = new MainTemplate(this);//Crear interfaz del menu del juego
     }
     
-    public JFrame getFrame(){
+    public JPanel getComponent(){
         return mainTemplate;
     }
 
@@ -21,8 +23,9 @@ public class MainComponent implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainTemplate.getBJugar()) {
-            mainTemplate.closeWindow();
+            Ventana.getReferencia().setVentanaLoading();
+            Ventana.getReferencia().setVentanaGame();
         }
     }
-    
+
 }

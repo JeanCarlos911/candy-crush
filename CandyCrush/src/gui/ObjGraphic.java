@@ -13,25 +13,42 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-public final class Interfaz{
+public final class ObjGraphic{
     
-
-    private Interfaz(){
+    private ObjGraphic(){
     }
     
-    public static JPanel getPanel(int x, int y, int ancho, int largo, Color color){
-        JPanel panel = getPanel(x, y, ancho, largo);
-        panel.setBackground(color);
+    public static Icon getIcon(String ruta){
+        Icon icono = new ImageIcon(Icon.class.getResource(ruta));
+        return icono;
+    }
+    
+    public static Icon getIcon(String ruta, int width, int height){
+        ImageIcon iIcono = new ImageIcon(Icon.class.getResource(ruta));
+        Icon icono = new ImageIcon(iIcono.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
+        return icono;
+    }
+    
+    public static JPanel setPanel(JPanel panel, int x, int y, int ancho, int largo){
+        panel.setBounds(x, y, ancho, largo);
+        panel.setBackground(Color.BLACK);
+        panel.setLayout(null);
         return panel;
     }
     
     public static JPanel getPanel(int x, int y, int ancho, int largo){
         JPanel panel = new JPanel();
-        panel.setBounds(x, y, ancho, largo);
-        panel.setLayout(null);
+        setPanel(panel, x, y, ancho, largo);
+        return panel;
+    }
+    
+    public static JPanel getPanel(int x, int y, int ancho, int largo, Color color){
+        JPanel panel = getPanel(x, y, ancho, largo);
+        panel.setBackground(color);
         return panel;
     }
     
@@ -58,12 +75,6 @@ public final class Interfaz{
         return label;
     }
     
-    public static Icon getIcon(String ruta, int width, int height){
-        ImageIcon iIcono = new ImageIcon(Icon.class.getResource(ruta));
-        Icon icono = new ImageIcon(iIcono.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
-        return icono;
-    }
-    
     public static void setFrame(JFrame frame, int ancho, int alto, String titulo){
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
         frame.setTitle(titulo);
@@ -79,25 +90,34 @@ public final class Interfaz{
         return frame;
     }
     
-    public static JButton getButton(Icon icono, int x, int y, Cursor cursor){
+    public static JButton getButton(int x, int y, Icon icono, Cursor cursor){
         JButton button = new JButton();
         button.setContentAreaFilled(false);
         button.setBorder(null);
-        button.setIcon(icono);
-        button.setSize(icono.getIconWidth(), icono.getIconHeight());
         button.setLocation(x, y);
         button.setCursor(cursor);
+        button.setFocusable(false);
+        if(icono != null){
+            button.setIcon(icono);
+            button.setSize(icono.getIconWidth(), icono.getIconHeight());
+        }
+        return button;
+    }
+    
+    public static JButton getButton(int x, int y, int ancho, int alto, Cursor cursor, Icon icono, Color colorFondo, boolean esSolido){
+        JButton button = getButton(x, y, icono, cursor);
+        button.setSize(ancho, alto);
+        button.setBackground(colorFondo);
+        button.setContentAreaFilled(esSolido);
         return button;
     }
     
     public static JButton getButton(String texto, int x, int y, int ancho, int alto, Cursor cursor, Icon icono, Font fuente, Color colorFondo,
             Color colorFuente,Border borde, String direccion, boolean esSolido){
         
-        JButton button = getButton(icono, x, y, cursor);
+        JButton button = getButton(x, y, ancho, alto, cursor, icono, colorFondo, esSolido);
         button.setText(texto);
-        button.setSize(ancho, alto);
         button.setFont(fuente);
-        button.setBackground(colorFondo);
         button.setForeground(colorFuente);
         button.setBorder(borde);
         button.setContentAreaFilled(esSolido);
@@ -112,6 +132,34 @@ public final class Interfaz{
                 break;
         }
         return button;
+    }
+    
+    public static JTextField getJTextField(int x, int y, int width, int height, String text, Color foreground, Color background, Color caret,
+            String alignment){
+        JTextField textField = new JTextField(text);
+        textField.setSize(width, height);
+        textField.setLocation(x, y);
+        textField.setForeground(foreground);
+        textField.setBackground(background);
+        textField.setCaretColor(caret);
+        switch (alignment) {
+            case "CENTER":
+                textField.setHorizontalAlignment(0);
+                break;
+            case "RIGTH":
+                textField.setHorizontalAlignment(4);
+                break;
+            case "TOP":
+                textField.setHorizontalAlignment(1);
+                break;
+            case "BOTTOM":
+                textField.setHorizontalAlignment(3);
+                break;
+            default:
+                textField.setHorizontalAlignment(2);
+                break;
+        }
+        return textField;
     }
     
 }

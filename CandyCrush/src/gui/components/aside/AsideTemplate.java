@@ -1,4 +1,4 @@
-package gui.components.AsideComponent;
+package gui.components.aside;
 
 //import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -11,13 +11,19 @@ import java.awt.Font;
 
 public class AsideTemplate extends JPanel {
 
+    private AsideComponent asideComponent;
+
     private static final long serialVersionUID = 1L;
     private JLabel image, txtMovimientosRestantes, txtVidas, txtName;
     private final int ancho,alto;
     private JLabel puntuacionObjetivo, puntuacionActual;
 
-    public AsideTemplate(Jugador jugador,int puntuacionObjetivo,int puntuacionActual){
-        
+    public AsideTemplate(AsideComponent ac, Jugador jugador){
+
+        asideComponent = ac;
+        int puntuacionObjetivo = 1000;
+        int puntuacionActual = jugador.getPuntaje();
+
         ancho = 350;
         alto = 540;
 
@@ -36,7 +42,7 @@ public class AsideTemplate extends JPanel {
         txtName.setLocation((this.getWidth()-txtName.getWidth())/2, 20);
         txtName.setForeground(Color.white);
         //------------------------------------------------------------------------------------
-        txtMovimientosRestantes = new JLabel("Movimientos Restantes: "+String.valueOf(jugador.getNumeroMovimientos()));
+        txtMovimientosRestantes = new JLabel("Movimientos Restantes: "+String.valueOf(jugador.getTurnosRestantes()));
         txtMovimientosRestantes.setFont(new Font("Liberation Serif",Font.PLAIN,25));
         txtMovimientosRestantes.setSize(new Dimension(300,30));
         txtMovimientosRestantes.setLocation((this.getWidth()-txtMovimientosRestantes.getWidth())/2,300);
@@ -66,6 +72,7 @@ public class AsideTemplate extends JPanel {
         add(txtMovimientosRestantes);
         add(this.puntuacionObjetivo);
         add(this.puntuacionActual);
+        setLocation(15, 10);
     }
     
 }

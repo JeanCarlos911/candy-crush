@@ -1,62 +1,49 @@
 package gui.components.tablero;
 
+import controllers.Componente;
 import game.Dulce;
 import game.Tablero;
-import static gui.ObjDecorator.AZUL_GRIS;
-import static gui.ObjDecorator.AZUL_GRIS_OSCURO;
-import static gui.ObjDecorator.MOSTAZA;
-import static gui.ObjDecorator.VERDE;
+import gui.RecursoService;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class TableroComponent implements MouseListener{
+public class TableroComponent extends MouseAdapter implements Componente{
     
-    //externo
-    private TableroTemplate tableroTemplate;
-    
-    //atributo compartido
-    private Tablero tablero;
+    //referencias
+    private RecursoService recurso; //service
 
     //atributos propios
+    private Tablero tablero;//tablero a graficar
+    private TableroTemplate tableroTemplate; //user interface
     private boolean pressed;
-    private int casillasSeleccionadas, sleep, index1[], index2[];
+    private int casillasSeleccionadas, index1[], index2[];
     
     public TableroComponent(){
+        recurso = RecursoService.getService();
         index1 = new int[2];
         index2 = new int[2];
         tablero = new Tablero();
         tableroTemplate = new TableroTemplate(this);
     }
     
-    public JPanel getComponent() {
+    @Override
+    public JPanel getGraphicComponent() {
         return tableroTemplate;
     }
     
-    protected Dulce[][] getMatriz(){
-        return tablero.getMatriz();
-    }
-    
-    @Override
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    @Override
     public void mousePressed(MouseEvent e) {
         pressed = true;
         if(e.getSource().getClass().toString().equals("class javax.swing.JButton") && 
-                !tableroTemplate.getDulce(e.getSource()).getBackground().equals(MOSTAZA)){
+                !tableroTemplate.getDulce(e.getSource()).getBackground().equals(recurso.MOSTAZA)){
             if(casillasSeleccionadas<2){
                 casillasSeleccionadas++;
                 index1 = tableroTemplate.getLocationDulce(e.getSource());
-                tableroTemplate.getDulce(e.getSource()).setBackground(MOSTAZA);
+                tableroTemplate.getDulce(e.getSource()).setBackground(recurso.MOSTAZA);
             }
         }
     }
 
-    //PROBLEMA
-    @Override
     public void mouseReleased(MouseEvent e) {
         pressed = false;
         if(casillasSeleccionadas == 2 && verificarMovimiento(index1, index2)){
@@ -74,31 +61,33 @@ public class TableroComponent implements MouseListener{
         casillasSeleccionadas=0;
     }
 
-    @Override
     public void mouseEntered(MouseEvent e) {
         if(e.getSource().getClass().toString().equals("class javax.swing.JButton")){
             if(pressed && casillasSeleccionadas<2){
                 casillasSeleccionadas++;
                 index2 = tableroTemplate.getLocationDulce(e.getSource());
-                tableroTemplate.getDulce(e.getSource()).setBackground(MOSTAZA);
+                tableroTemplate.getDulce(e.getSource()).setBackground(recurso.MOSTAZA);
             }
             else
-                tableroTemplate.getDulce(e.getSource()).setBackground(VERDE);
+                tableroTemplate.getDulce(e.getSource()).setBackground(recurso.VERDE);
         }
     }
 
-    @Override
     public void mouseExited(MouseEvent e) {
-        if(tableroTemplate.getDulce(e.getSource()).getBackground().equals(VERDE) || casillasSeleccionadas > 2){
+        if(tableroTemplate.getDulce(e.getSource()).getBackground().equals(recurso.VERDE) || casillasSeleccionadas > 2){
             if(e.getSource().getClass().toString().equals("class javax.swing.JButton")){
                 int[] posicion = tableroTemplate.getLocationDulce(e.getSource());
                 if((posicion[0] + posicion[1]) % 2 == 0){
-                    tableroTemplate.getDulce(e.getSource()).setBackground(AZUL_GRIS_OSCURO);
+                    tableroTemplate.getDulce(e.getSource()).setBackground(recurso.AZUL_GRIS_OSCURO);
                 }else{
-                    tableroTemplate.getDulce(e.getSource()).setBackground(AZUL_GRIS);
+                    tableroTemplate.getDulce(e.getSource()).setBackground(recurso.AZUL_GRIS);
                 }//tarea: Timer
             }
         }
+    }
+    
+    protected Dulce[][] getMatriz(){
+        return tablero.getMatriz();
     }
     
     private boolean verificarMovimiento(int[] posicion1, int[] posicion2){
@@ -149,10 +138,5 @@ public class TableroComponent implements MouseListener{
         }
     }
     */
-    private void sleep(int time){
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException ex) {}
-    }
     
 }

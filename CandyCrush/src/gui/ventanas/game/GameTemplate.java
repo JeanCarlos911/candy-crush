@@ -1,11 +1,9 @@
 package gui.ventanas.game;
 
+import gui.GraphicService;
 import gui.components.tablero.TableroComponent;
 import gui.components.aside.AsideComponent;
 
-import static gui.ObjGraphic.setPanel;
-import static gui.ObjGraphic.getPanel;
-import static gui.ObjGraphic.getLabel;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -14,14 +12,14 @@ import javax.swing.JPanel;
 public class GameTemplate extends JPanel{
 
     private GameComponent gameComponent;
+    private GraphicService interfaz;
 
     private Icon iBackground;
-
     private JPanel tablero, aside;
-
     private JLabel lBackground;
 
     public GameTemplate(GameComponent gc){
+        interfaz = GraphicService.getService();
         gameComponent = gc;
 
         cargarRecursos();
@@ -29,7 +27,7 @@ public class GameTemplate extends JPanel{
         crearPaneles();
         crearDecoracion();
 
-        setPanel(this, 0, 0, 1195, 750);
+        interfaz.setPanel(this, 0, 0, 1195, 750);
         setVisible(true);
     }
 
@@ -38,15 +36,16 @@ public class GameTemplate extends JPanel{
     }
 
     private void crearPaneles(){
-        tablero = (new TableroComponent()).getComponent();
+        tablero = (new TableroComponent()).getGraphicComponent();
         add(tablero);
 
-        aside = (new AsideComponent()).getComponent();
+        aside = (new AsideComponent()).getGraphicComponent();
         add(aside);
     }
 
     private void crearDecoracion(){
-        lBackground = getLabel(iBackground, 0, 0);
+        lBackground = interfaz.getLabel(iBackground, 0, 0);
         add(lBackground);
     }
+    
 }

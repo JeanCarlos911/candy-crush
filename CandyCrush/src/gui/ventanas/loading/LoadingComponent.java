@@ -1,8 +1,9 @@
 package gui.ventanas.loading;
 
+import controllers.Componente;
 import javax.swing.JPanel;
 
-public class LoadingComponent{
+public class LoadingComponent implements Componente{
 
     private LoadingTemplate loadingTemplate;
 
@@ -10,7 +11,8 @@ public class LoadingComponent{
         loadingTemplate = new LoadingTemplate(this);
     }
 
-    public JPanel getComponent(){
+    @Override
+    public JPanel getGraphicComponent(){
         return loadingTemplate;
     }
 

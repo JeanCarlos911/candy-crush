@@ -1,19 +1,21 @@
 package gui.components.aside;
 
+import controllers.Componente;
 import javax.swing.JPanel;
 import game.Partida;
-import game.Jugador;
 
-public class AsideComponent {
+public class AsideComponent implements Componente{
  
     private static final long serialVersionUID = 1L;
+    
     private AsideTemplate asideTemplate;
 
     public AsideComponent(){
         asideTemplate = new AsideTemplate(this, Partida.getReferencia().getJugador());
     }
 
-    public JPanel getComponent(){
+    @Override
+    public JPanel getGraphicComponent(){
         return asideTemplate;
     }
     

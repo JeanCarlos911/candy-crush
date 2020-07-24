@@ -33,8 +33,8 @@ public class Menu {
                 nextPage();
                 System.out.printf("%s\n" + getMarginLeft() + "★       Ingrese nombre del jugador        ★\n%s\n$ ", linea, linea);
                 nombre = in.next();
-                Partida nuevaPartida = new Partida(nombre);
-                nuevaPartida.iniciarPartida();
+                Partida nuevaPartida = new Partida();
+                //nuevaPartida.iniciarPartida();
                 break;
             case 2:
                 nextPage();

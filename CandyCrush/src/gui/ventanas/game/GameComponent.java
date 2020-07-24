@@ -1,8 +1,9 @@
 package gui.ventanas.game;
 
+import controllers.Componente;
 import javax.swing.JPanel;
 
-public class GameComponent{
+public class GameComponent implements Componente{
 
     private GameTemplate gameTemplate;
 
@@ -10,7 +11,8 @@ public class GameComponent{
         gameTemplate = new GameTemplate(this);
     }
 
-    public JPanel getComponent(){
+    @Override
+    public JPanel getGraphicComponent(){
         return gameTemplate;
     }
 

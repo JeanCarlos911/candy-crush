@@ -10,6 +10,9 @@ import game.Partida;
 import game.Tablero;
 
 public class Estado {
+    //referencias
+    private static Jugador jugador;
+    
     //Atributos
     private static final String linea = Menu.getMarginLeft() + "★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★",
         paddinLeft  = Menu.getMarginLeft() + "★                ", paddinRight = "                ★", lineaVacia = paddinLeft + "                               " + paddinRight;
@@ -26,6 +29,9 @@ public class Estado {
      * @param t Tablero en el que juga el jugador
      */
     public static void actualizarDibujoJuego(Partida p, Jugador j, Tablero t, Nivel n) {
+        if(jugador == null)
+            jugador = j;
+        
         Menu.nextPage();
         //Estructura similar al html para estar familiarizados
         header();
@@ -50,7 +56,7 @@ public class Estado {
     }
 
     private static void section(Jugador j) {
-        System.out.printf("   %s   %s   %s\n%s\n", Menu.getMarginLeft() + j.getNombre(), "♥ = " + j.getVidasRestantes(), "Movimientos restantes = " + j.getNumeroMovimientos(),
+        System.out.printf("   %s   %s   %s\n%s\n", Menu.getMarginLeft() + j.getNombre(), "♥ = " + j.getVidasRestantes(), "Movimientos restantes = " + j.getTurnosRestantes(),
           linea);
     }
 
@@ -75,7 +81,7 @@ public class Estado {
 
     private static void footer(Nivel n, Partida p) {
         System.out.printf("%s\n   %s   %s\n%s\n\n",
-                linea, Menu.getMarginLeft() + "puntuación objetivo = " + n.getPuntuacionObjetivo(), "puntuación acumulada = " + p.getPuntuacionAcumulada(),
+                linea, Menu.getMarginLeft() + "puntuación objetivo = " + n.getPuntuacionObjetivo(), "puntuación acumulada = " + jugador.getPuntaje(),
                 linea);
     }
 

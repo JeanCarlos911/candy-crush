@@ -1,7 +1,6 @@
 package gui.ventanas.loading;
 
-import static gui.ObjGraphic.setPanel;
-import static gui.ObjGraphic.getLabel;
+import gui.GraphicService;
 import javax.swing.ImageIcon;
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -9,6 +8,7 @@ import javax.swing.JPanel;
 
 public class LoadingTemplate extends JPanel{
 
+    private GraphicService interfaz;
     private LoadingComponent loadingComponent;
 
     private Icon iBackground;
@@ -16,12 +16,13 @@ public class LoadingTemplate extends JPanel{
     private JLabel lBackground;
 
     public LoadingTemplate(LoadingComponent lc){
+        interfaz = GraphicService.getService();
         loadingComponent = lc;
 
         cargarRecursos();
         crearDecoracion();
 
-        setPanel(this, 0, 0, 1190, 740);
+        interfaz.setPanel(this, 0, 0, 1190, 740);
         setVisible(true);
     }
 
@@ -30,7 +31,7 @@ public class LoadingTemplate extends JPanel{
     }
 
     private void crearDecoracion(){
-        lBackground = getLabel(iBackground, 0, 0);
+        lBackground = interfaz.getLabel(iBackground, 0, 0);
         add(lBackground);
     }
 }

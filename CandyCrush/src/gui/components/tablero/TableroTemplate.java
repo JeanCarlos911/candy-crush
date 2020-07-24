@@ -1,12 +1,7 @@
 package gui.components.tablero;
 
-import static gui.ObjGraphic.getButton;
-import static gui.ObjGraphic.getIcon;
-import static gui.ObjGraphic.getLabel;
-import static gui.ObjGraphic.setPanel;
-import static gui.ObjDecorator.AZUL_GRIS;
-import static gui.ObjDecorator.AZUL_GRIS_OSCURO;
-import static gui.ObjDecorator.CURSOR_MANO;
+import gui.GraphicService;
+import gui.RecursoService;
 import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -16,7 +11,10 @@ import javax.swing.JPanel;
 
 public class TableroTemplate extends JPanel{
     
+    //referencias
     private TableroComponent tableroComponent;
+    private RecursoService recurso;
+    private GraphicService interfaz;
     
     //objetos decoradores
     private Icon iBackground, dulce1, dulce2, dulce3, dulce4, dulce5;
@@ -27,13 +25,15 @@ public class TableroTemplate extends JPanel{
     
     public TableroTemplate(TableroComponent tc){
         tableroComponent = tc;
+        recurso = RecursoService.getService();
+        interfaz = GraphicService.getService();
         
         cargarRecursos();
         
         crearBotonesConDulces();
         crearDecoracion();
         
-        setPanel(this, 395, 12, 695, 695);
+        interfaz.setPanel(this, 395, 12, 695, 695);
     }
 
     protected JButton getDulce(int[] index) {
@@ -61,9 +61,9 @@ public class TableroTemplate extends JPanel{
                 int ico = tableroComponent.getMatriz()[i][j].getForma();
                 
                 if((i+j)%2 == 0)
-                    dulce[i][j].setBackground(AZUL_GRIS_OSCURO);
+                    dulce[i][j].setBackground(recurso.AZUL_GRIS_OSCURO);
                 else
-                    dulce[i][j].setBackground(AZUL_GRIS);
+                    dulce[i][j].setBackground(recurso.AZUL_GRIS);
                 
                 dulce[i][j].setBounds(j*76+6, i*76+6, 76, 76);
                 
@@ -130,9 +130,9 @@ public class TableroTemplate extends JPanel{
                         break;
                 }
                 if((i+j)%2 == 0){
-                    dulce[i][j] = getButton(j*76+6, i*76+6, 76, 76, CURSOR_MANO, icono, AZUL_GRIS_OSCURO, true);
+                    dulce[i][j] = interfaz.getButton(j*76+6, i*76+6, 76, 76, recurso.CURSOR_MANO, icono, recurso.AZUL_GRIS_OSCURO, true);
                 }else{
-                    dulce[i][j] = getButton(j*76+6, i*76+6, 76, 76, CURSOR_MANO, icono, AZUL_GRIS, true);
+                    dulce[i][j] = interfaz.getButton(j*76+6, i*76+6, 76, 76, recurso.CURSOR_MANO, icono, recurso.AZUL_GRIS, true);
                 }
                 dulce[i][j].addMouseListener(tableroComponent);
                 add(dulce[i][j]);
@@ -141,7 +141,7 @@ public class TableroTemplate extends JPanel{
     }
 
     private void crearDecoracion() {
-        lBackground = getLabel(iBackground, 0, 0);
+        lBackground = interfaz.getLabel(iBackground, 0, 0);
         add(lBackground);
     }
 

@@ -4,10 +4,10 @@
  */
 package ui;
 
-import game.Jugador;
-import game.Nivel;
-import game.Partida;
-import game.Tablero;
+import models.Jugador;
+import models.Nivel;
+import models.Partida;
+import models.Tablero;
 
 public class Estado {
     //referencias

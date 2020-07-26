@@ -1,9 +1,11 @@
 package gui.components.tablero;
 
-import controllers.Componente;
-import game.Dulce;
-import game.Tablero;
+import models.Componente;
+import models.Dulce;
+import models.Tablero;
 import gui.RecursoService;
+import gui.components.aside.AsideTemplate;
+import gui.ventanas.Ventana;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
@@ -48,15 +50,13 @@ public class TableroComponent extends MouseAdapter implements Componente{
         pressed = false;
         if(casillasSeleccionadas == 2 && verificarMovimiento(index1, index2)){
             tablero.moverDulce(new int[] {index1[0], index1[1], index2[0], index2[1]});
-            tablero.setPuntuacion(0);
             
-            if(tablero.actualizarTablero()){
-                //animIntercambio();
-            }else{
+            if(!tablero.actualizarTablero()){
                 tablero.moverDulce(new int[] {index1[0], index1[1], index2[0], index2[1]});
             }
         }
         tableroTemplate.refrescar();
+        Ventana.getReference().repaint();
         
         casillasSeleccionadas=0;
     }
@@ -102,41 +102,5 @@ public class TableroComponent extends MouseAdapter implements Componente{
             return true;
         }
     }
-/*
-    private void animIntercambio() {
-        int direccionX, direccionY;
-        
-        Point meta = tableroTemplate.getDulce(index2).getLocation();
-        direccionX = (((index2[1] - index1[1]) != 0)?(index2[1] - index1[1])/Math.abs(index2[1] - index1[1]):0);
-        direccionY = (((index2[0] - index1[0]) != 0)?(index2[0] - index1[0])/Math.abs(index2[0] - index1[0]):0);
-        
-        while(true){
-            System.out.println(tableroTemplate.getDulce(index1).getLocation().x + " " + 
-                    tableroTemplate.getDulce(index1).getLocation().y + " " +
-                    tableroTemplate.getDulce(index2).getLocation().x + " " + 
-                    tableroTemplate.getDulce(index2).getLocation().y + " " + 
-                    meta.x + " " + meta.y + " " + direccionX + " " + direccionY
-            );
-            
-            sleep(10);
-            
-            if(tableroTemplate.getDulce(index1).getLocation().x == meta.x ^ 
-                    tableroTemplate.getDulce(index1).getLocation().y == meta.y){
-                tableroTemplate.setLocacion(
-                        tableroTemplate.getDulce(index1).getLocation().x + direccionX,
-                        tableroTemplate.getDulce(index1).getLocation().y + direccionY,
-                        index1
-                );
-                tableroTemplate.setLocacion(
-                        tableroTemplate.getDulce(index2).getLocation().x - direccionX,
-                        tableroTemplate.getDulce(index2).getLocation().y - direccionY,
-                        index2
-                );
-            }
-            else
-                break;
-        }
-    }
-    */
     
 }

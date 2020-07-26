@@ -3,26 +3,26 @@ package gui.components.aside;
 //import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import game.Jugador;
+import models.Jugador;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 
 public class AsideTemplate extends JPanel {
 
     private AsideComponent asideComponent;
+    private Jugador jugador;
 
     private static final long serialVersionUID = 1L;
     private JLabel image, txtMovimientosRestantes, txtVidas, txtName;
     private final int ancho,alto;
     private JLabel puntuacionObjetivo, puntuacionActual;
-
-    public AsideTemplate(AsideComponent ac, Jugador jugador){
-
+    
+    public AsideTemplate(AsideComponent ac){
+        jugador = Jugador.getReference("");
         asideComponent = ac;
-        int puntuacionObjetivo = 1000;
-        int puntuacionActual = jugador.getPuntaje();
 
         ancho = 350;
         alto = 540;
@@ -54,17 +54,17 @@ public class AsideTemplate extends JPanel {
         txtVidas.setLocation((this.getWidth()-110)/2,200);
         txtVidas.setForeground(Color.white);
         //--------------------------------------------------------------------------------------
-        this.puntuacionObjetivo = new JLabel("Puntuacion Objetivo: "+String.valueOf(puntuacionObjetivo));
-        this.puntuacionObjetivo.setSize(new Dimension(300,25));
-        this.puntuacionObjetivo.setLocation((this.getWidth()-this.puntuacionObjetivo.getWidth())/2,400);
-        this.puntuacionObjetivo.setFont(new Font("Liberation Serif",Font.PLAIN,25));
-        this.puntuacionObjetivo.setForeground(Color.white);
+        puntuacionObjetivo = new JLabel("Puntuacion Objetivo: "+String.valueOf(1000));
+        puntuacionObjetivo.setSize(new Dimension(300,25));
+        puntuacionObjetivo.setLocation((this.getWidth()-this.puntuacionObjetivo.getWidth())/2,400);
+        puntuacionObjetivo.setFont(new Font("Liberation Serif",Font.PLAIN,25));
+        puntuacionObjetivo.setForeground(Color.white);
         //--------------------------------------------------------------------------------------- 
-        this.puntuacionActual = new JLabel("Puntuacion Actual: "+String.valueOf(puntuacionActual));  
-        this.puntuacionActual.setSize(new Dimension(300,25));
-        this.puntuacionActual.setLocation((this.getWidth()-this.puntuacionActual.getWidth())/2, 450);
-        this.puntuacionActual.setFont(new Font("Liberation Serif",Font.PLAIN,25));
-        this.puntuacionActual.setForeground(Color.white);
+        puntuacionActual = new JLabel("Puntuacion Actual: "+String.valueOf(jugador.getPuntaje()));  
+        puntuacionActual.setSize(new Dimension(300,25));
+        puntuacionActual.setLocation((this.getWidth()- puntuacionActual.getWidth())/2, 450);
+        puntuacionActual.setFont(new Font("Liberation Serif",Font.PLAIN,25));
+        puntuacionActual.setForeground(Color.white);
         //---------------------------------------------------------------------------------------    
         add(image);
         add(txtName);
@@ -73,6 +73,16 @@ public class AsideTemplate extends JPanel {
         add(this.puntuacionObjetivo);
         add(this.puntuacionActual);
         setLocation(15, 10);
+    }
+    
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        
+        txtMovimientosRestantes.setText("Movimientos Restantes: " + String.valueOf(jugador.getTurnosRestantes()));
+        txtVidas.setText("Vidas restantes: " + String.valueOf(jugador.getVidasRestantes()));
+        puntuacionActual.setText("Puntuacion Actual: " + String.valueOf(jugador.getPuntaje()));
+        
+        updateUI();
     }
     
 }

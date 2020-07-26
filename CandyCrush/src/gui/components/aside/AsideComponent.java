@@ -1,8 +1,7 @@
 package gui.components.aside;
 
-import controllers.Componente;
+import models.Componente;
 import javax.swing.JPanel;
-import game.Partida;
 
 public class AsideComponent implements Componente{
  
@@ -11,7 +10,7 @@ public class AsideComponent implements Componente{
     private AsideTemplate asideTemplate;
 
     public AsideComponent(){
-        asideTemplate = new AsideTemplate(this, Partida.getReferencia().getJugador());
+        asideTemplate = new AsideTemplate(this);
     }
 
     @Override

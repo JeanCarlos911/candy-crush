@@ -1,6 +1,6 @@
 package gui.ventanas.loading;
 
-import controllers.Componente;
+import models.Componente;
 import javax.swing.JPanel;
 
 public class LoadingComponent implements Componente{

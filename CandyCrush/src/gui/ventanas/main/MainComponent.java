@@ -1,6 +1,6 @@
 package gui.ventanas.main;
 
-import controllers.Componente;
+import models.Componente;
 import gui.ventanas.Ventana;
 
 import java.awt.event.ActionEvent;
@@ -19,8 +19,8 @@ public class MainComponent implements ActionListener, Componente{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainTemplate.getBJugar()) {
-            Ventana.getReferencia().setVentanaLoading();
-            Ventana.getReferencia().setVentanaGame();
+            Ventana.getReference().setVentanaLoading();
+            Ventana.getReference().setVentanaGame();
         }
     }
 

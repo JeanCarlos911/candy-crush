@@ -1,6 +1,6 @@
 package gui.ventanas.game;
 
-import controllers.Componente;
+import models.Componente;
 import javax.swing.JPanel;
 
 public class GameComponent implements Componente{

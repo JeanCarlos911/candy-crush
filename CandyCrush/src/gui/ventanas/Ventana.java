@@ -41,7 +41,8 @@ public class Ventana extends JFrame{
         repaint();
     }
 
-    public static Ventana getReferencia(){
+    public static Ventana getReference(){
         return ventana;
     }
+    
 }

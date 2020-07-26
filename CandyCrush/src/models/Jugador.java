@@ -75,6 +75,7 @@ public class Jugador {
      * @param puntuacion puntaje obtenido por el jugador
      */
     public void sumarPuntaje(int puntuacion){
+        restarTurno();
         this.puntaje += puntuacion;
     }
 

@@ -25,7 +25,7 @@ public class AsideTemplate extends JPanel {
         asideComponent = ac;
 
         ancho = 350;
-        alto = 540;
+        alto = 600;
 
         setSize(new Dimension(ancho,alto));
         setLayout(null);
@@ -34,7 +34,7 @@ public class AsideTemplate extends JPanel {
         image = new JLabel();
         image.setSize(new Dimension(96,96));
         image.setIcon(new ImageIcon("../resources/main/iconHeart.png"));
-        image.setLocation(20, 170);
+        image.setLocation((this.getWidth() - image.getWidth())/2,100);
         //-----------------------------------------------------------------------------------
         txtName = new JLabel("Jugador: "+jugador.getNombre());
         txtName.setFont(new Font("Liberation Serif",Font.PLAIN,25));
@@ -50,8 +50,8 @@ public class AsideTemplate extends JPanel {
        //-------------------------------------------------------------------------------------
         txtVidas = new JLabel("Vidas restantes: " + String.valueOf(jugador.getVidasRestantes()));
         txtVidas.setFont(new Font("Liberation Serif",Font.PLAIN,25));
-        txtVidas.setSize(new Dimension(200,30));
-        txtVidas.setLocation((this.getWidth()-110)/2,200);
+        txtVidas.setSize(new Dimension(300,30));
+        txtVidas.setLocation((this.getWidth()-200)/2,200);
         txtVidas.setForeground(Color.white);
         //--------------------------------------------------------------------------------------
         puntuacionObjetivo = new JLabel("Puntuacion Objetivo: "+String.valueOf(1000));

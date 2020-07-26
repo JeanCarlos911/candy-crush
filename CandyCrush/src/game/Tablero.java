@@ -69,15 +69,13 @@ public class Tablero {
      * Modifica el tablero de tal forma que no hayan filas ni columnas formadas al iniciar
      */
     public void organizar(){
-        boolean existe = this.hayLinea();
-        if(existe){
+        if( this.hayLinea() ){
             this.eliminarDulces();
             this.caerDulces();
             this.llenarDulces();
-            organizar();
-        }else if(hayPosibleMovimiento() == false){
+            this.organizar();
+        }else if( !hayPosibleMovimiento() ){
             generarTablero();
-            organizar();
         }
     }
 
@@ -140,81 +138,106 @@ public class Tablero {
     }
 
     /**
-     * Encuentra linea válida en el tablero
-     * @return int[] con descripciones de la linea encontrada
-     */
-    private int[] encontrarLinea() {
-        int fila = 0, columna = 0, contadorDulces = 1;
-        while(columna < 8){
-            if(this.matriz[fila][columna].getForma() == this.matriz[fila][columna+1].getForma()){
-                contadorDulces ++;
-            }else{
-                if(contadorDulces > 2){
-                    return new int[]{contadorDulces, fila, columna, 0};
-                }else{
-                    contadorDulces = 1;
-                }
-            }
-            if(columna<7){
-                columna ++;
-            }else if(contadorDulces > 2){
-                return new int[]{contadorDulces, fila, columna + 1, 0};
-            }else if(fila < 8){
-                fila ++;
-                columna = 0;
-                contadorDulces = 1;
-            }else{
-                break;
-            }
-        }
-        fila = 0; columna = 0; contadorDulces = 1;
-        while(fila < 8){
-            if(this.matriz[fila][columna].getForma() == this.matriz[fila+1][columna].getForma()){
-                contadorDulces ++;
-            }else{
-                if(contadorDulces > 2){
-                    return new int[]{contadorDulces, fila, columna, 1};
-                }else{
-                    contadorDulces = 1;
-                }
-            }
-            if(fila<7){
-                fila ++;
-            }else if(contadorDulces > 2){
-                return new int[]{contadorDulces, fila + 1, columna, 1};
-            }else if(columna < 8){
-                columna ++;
-                fila = 0;
-                contadorDulces = 1;
-            }else{
-                break;
-            }
-        }
-        return new int[]{-1};
-    }
-
-    /**
-     * Este metodo elimina una fila de dulces encontrados (transforma su forma a vacio es decir a int 0)
+     * Notacion: pP puntero principal; cH: contador Horizontal; cV: contadorVertical; i: fila; j: columna;
+     * Este es un metodo algo refinado y elaborado
      */
     private void eliminarDulces() {
-        int[] dato = encontrarLinea();
-        int fila = dato[1];
-        int columna = dato[2];
+        boolean eliminar = false;//si es true no elimina nueva pieza porq ya elimino una
         
-        for (int dulces = dato[0]; dulces > 0; dulces--){
-            this.matriz[fila][columna].setForma(0);
-            if(dato[3] == 0){
-                columna--;
-            }else {
-                fila--;
+        //tipo de pieza a eliminar horizontales y de complejidad 2 (es decir, compuesta por fila y columna)
+        //selecciona casilla
+        for(int pPi=0; pPi<9; pPi++){
+            for(int pPj=0; pPj<9; pPj++){
+                //continua solo si la casilla esta en antes de la columna 7
+                if(pPj<7){
+                    //verifica si la casilla seleccionada esta en una fila
+                    int cH = 1; 
+                    for(int cHj=pPj+1; cHj<9; cHj++){
+                        if(matriz[pPi][cHj].getForma() == matriz[pPi][pPj].getForma())
+                            cH ++;
+                        else
+                            break;
+                    }
+                    //continua solo si esta en fila
+                    if(cH>2){
+                        eliminar=true;//porque es fijo que se elimina una pieza
+                        //itera a lo largo de la fila
+                        for(int cHj=pPj; cHj<pPj+cH; cHj++){
+                            //verifica si alguna parte de la fila esta en una columna
+                            int cV = 1;
+                            //cuenta hacia arriba
+                            if(pPi>0)
+                                for(int cVi=pPi-1; cVi>=0; cVi--){
+                                    if(matriz[cVi][cHj].getForma() == matriz[pPi][cHj].getForma())
+                                        cV++;
+                                    else
+                                        break;
+                                }
+                            //cuenta hacia abajo
+                            if(pPi<8)
+                                for(int cVi=pPi+1; cVi<9; cVi++){
+                                    if(matriz[cVi][cHj].getForma() == matriz[pPi][cHj].getForma())
+                                        cV++;
+                                    else
+                                        break;
+                                }
+                            //caso de que este en columna
+                            if(cV>2){
+                                //elimina hacia arriba
+                                if(pPi>0)
+                                    for(int cVi=pPi-1; cVi>=0; cVi--){
+                                        if(matriz[cVi][cHj].getForma() == matriz[pPi][cHj].getForma())
+                                            matriz[cVi][cHj].setForma(0);
+                                        else
+                                            break;
+                                    }
+                                //elimina hacia abajo
+                                if(pPi<8)
+                                    for(int cVi=pPi+1; cVi<9; cVi++){
+                                        if(matriz[cVi][cHj].getForma() == matriz[pPi][cHj].getForma())
+                                            matriz[cVi][cHj].setForma(0);
+                                        else
+                                            break;
+                                    }
+                            }
+                            //elimina el del centro o fila este o no este en columna
+                            matriz[pPi][cHj].setForma(0);
+                        }
+                    }
+                }
             }
         }
+        
+        //pieza a eliminar verticales
+        if(!eliminar)
+            //selecciona casilla
+            for(int pPi=0; pPi<9; pPi++){
+                for(int pPj=0; pPj<9; pPj++){
+                    //continua solo si la casilla esta en antes de la fila 7
+                    if(pPi<7){
+                        //verifica si la casilla seleccionada esta en una columna
+                        int cV = 1;
+                        for(int cVi=pPi+1; cVi<9; cVi++){
+                            if(matriz[cVi][pPj].getForma() == matriz[pPi][pPj].getForma())
+                                cV ++;
+                            else
+                                break;
+                        }
+                        //continua solo si esta en columna
+                        if(cV>2)
+                            //itera a lo largo de la columna
+                            for(int cVi=pPi; cVi<pPi+cV; cVi++){
+                                matriz[cVi][pPj].setForma(0);
+                            }
+                    }
+                }
+            }
     }
 
     /**
      * Se encarga de la gravedad característica del candy crush cuando se elimina algún dulces
      */
-    private void caerDulces(){
+    private void caerDulces() {
         for(int i = 0; i < 10; i++){
             for(int fila = 0; fila < 8; fila++){
                 for(int columna = 0; columna < 9; columna++){
@@ -230,7 +253,7 @@ public class Tablero {
     /**
      * Reemplaza los espacios vacios por nuevos dulces
      */
-    private void llenarDulces(){
+    private void llenarDulces() {
         for(int i = 0; i < 9; i++){
             for(int j = 0; j < 9; j++){
                 if(this.matriz[i][j].getForma() == 0){
@@ -244,7 +267,7 @@ public class Tablero {
      * Mueve dos dulces segun posiciones dadas por el jugador en lenguaje tablero
      * @param dato arreglo con posiciones dadas por el usuario y traducidas a lenguaje tablero
      */
-    public void moverDulce(int[] dato){
+    public void moverDulce( int[] dato ) {
         int formaA = this.getDulce(dato[0], dato[1]).getForma();
         int formaB = this.getDulce(dato[2], dato[3]).getForma();
 
@@ -255,9 +278,8 @@ public class Tablero {
     /**
      * Actualiza el tablero con la variante que adiciona la puntuacion generada
      */
-    public boolean actualizarTablero(){
-        boolean existe = this.hayLinea();
-        if(existe){
+    public boolean actualizarTablero() {
+        if( this.hayLinea() ){
             this.eliminarDulces();
             this.validarPuntuacion();
             this.caerDulces();
@@ -268,13 +290,10 @@ public class Tablero {
         }else if(this.puntuacion == 0){
             return false;
         }else{
-            if(this.hayPosibleMovimiento()){
-                return true;
-            }else{
+            if(!this.hayPosibleMovimiento()){
                 generarTablero();
-                organizar();
-                return true;
             }
+                return true;
         }
 
     }
@@ -298,7 +317,7 @@ public class Tablero {
      * Suma puntuacion dependiendo del numero de dulces en serie dados
      * @param cantidadDulces numero de dulces en serie
      */
-    private void sumarPuntuacion(int cantidadDulces){
+    private void sumarPuntuacion( int cantidadDulces ) {
         switch(cantidadDulces){
             case 3:
                 this.puntuacion += 50;
@@ -312,13 +331,16 @@ public class Tablero {
             case 6:
                 this.puntuacion += 400;
                 break;
+            case 7:
+                this.puntuacion += 500;
+                break;
             default:
                 this.puntuacion += 0;
                 break;
         }
     }
 
-    private boolean hayPosibleMovimiento(){
+    private boolean hayPosibleMovimiento() {
         int contador = 0;
         String direccion = "";
         for(int i = 0; i <= 8; i++){

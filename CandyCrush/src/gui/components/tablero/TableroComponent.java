@@ -4,7 +4,6 @@ import models.Componente;
 import models.Dulce;
 import models.Tablero;
 import gui.RecursoService;
-import gui.components.aside.AsideTemplate;
 import gui.ventanas.Ventana;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -51,7 +50,7 @@ public class TableroComponent extends MouseAdapter implements Componente{
         if(casillasSeleccionadas == 2 && verificarMovimiento(index1, index2)){
             tablero.moverDulce(new int[] {index1[0], index1[1], index2[0], index2[1]});
             
-            if(!tablero.actualizarTablero()){
+            if(!tablero.actualizarTablero(true)){
                 tablero.moverDulce(new int[] {index1[0], index1[1], index2[0], index2[1]});
             }
         }

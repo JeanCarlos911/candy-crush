@@ -54,79 +54,7 @@ public class Tablero {
                 this.setDulce(i, j, new Dulce(Dulce.formaRamdon()));          
             }
         }
-        organizar();
-    }
-
-    /**
-     * Modifica el tablero de tal forma que no hayan filas ni columnas formadas al iniciar
-     */
-    public void organizar(){
-        if( this.hayLinea() ){
-            tableroController.eliminarDulces();
-            this.caerDulces();
-            this.llenarDulces();
-            this.organizar();
-        }else if( !tableroController.hayPosibleMovimiento() ){
-            generarTablero();
-        }
-    }
-
-    /**
-     * Verifica si hay linea válida en el tablero
-     * @return boolean true si hay linea
-     */
-    private boolean hayLinea() {
-        int fila = 0, columna = 0, contadorDulces = 1;
-        
-        while(columna < 8){
-            if(this.matriz[fila][columna].getForma() == this.matriz[fila][columna+1].getForma()){
-                contadorDulces ++;
-            }else{
-                if(contadorDulces > 2){
-                    return true;
-                }else{
-                    contadorDulces = 1;
-                }
-            }
-            if(columna<7){
-                columna ++;
-            }else if(contadorDulces > 2){
-                return true;
-            }else if(fila < 8){
-                fila ++;
-                columna = 0;
-                contadorDulces = 1;
-            }else{
-                break;
-            }
-        }
-        
-        fila = 0; columna = 0; contadorDulces = 1;
-        
-        while(fila < 8){
-            if(this.matriz[fila][columna].getForma() == this.matriz[fila+1][columna].getForma()){
-                contadorDulces ++;
-            }else{
-                if(contadorDulces > 2){
-                    return true;
-                }else{
-                    contadorDulces = 1;
-                }
-            }
-            if(fila<7){
-                fila ++;
-            }else if(contadorDulces > 2){
-                return true;
-            }else if(columna < 8){
-                columna ++;
-                fila = 0;
-                contadorDulces = 1;
-            }else{
-                break;
-            }
-        }
-        
-        return false;
+        actualizarTablero(false);
     }
 
     /**
@@ -173,26 +101,18 @@ public class Tablero {
     /**
      * Actualiza el tablero con la variante que adiciona la puntuacion generada
      */
-    public boolean actualizarTablero() {
-        llamada = false;
-        if( this.hayLinea() ){
-            tableroController.eliminarDulces();
-            tableroController.validarPuntuacion();
+    public boolean actualizarTablero(boolean sumaPuntuacion) {
+        tableroController.eliminarDulces();
+        if(tableroController.validarPuntuacion(sumaPuntuacion)){
             this.caerDulces();
             this.llenarDulces();
-            this.actualizarTablero();
-            
-            llamada = true;
+            this.actualizarTablero(sumaPuntuacion);
             return true;
-        }else if(!llamada){
-            return false;
         }else{
-            if(!tableroController.hayPosibleMovimiento()){
+            if(!tableroController.hayPosibleMovimiento())
                 generarTablero();
-            }
-                return true;
+            return false;
         }
-
     }
 
 }

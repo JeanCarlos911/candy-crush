@@ -241,7 +241,6 @@ public class TableroController {
                     }
 
                 }catch(ArrayIndexOutOfBoundsException e){}
-
             }
         }
         return false;
@@ -249,8 +248,9 @@ public class TableroController {
     
     /**
      * Adiciona la puntuacion generada por el movimiento del usuario
+     * @param sumaPuntuacion true si desea q la validacion sume puntuacion
      */
-    public void validarPuntuacion() {
+    public boolean validarPuntuacion(boolean sumaPuntuacion) {
         int cantidadDulces = 0;
         for(int i = 0; i < 9; i++){
             for(int j = 0; j<9; j++){
@@ -259,7 +259,9 @@ public class TableroController {
                 }
             }
         }
-        sumarPuntuacion(cantidadDulces);
+        if (sumaPuntuacion)
+            sumarPuntuacion(cantidadDulces);
+        return cantidadDulces != 0;
     }
     
     /**

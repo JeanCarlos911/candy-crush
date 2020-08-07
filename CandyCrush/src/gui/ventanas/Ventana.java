@@ -4,8 +4,9 @@ import gui.GraphicService;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import gui.ventanas.main.MainComponent;
-import gui.ventanas.loading.LoadingComponent;
 import gui.ventanas.game.GameComponent;
+import gui.components.notification.NotificationComponent;
+import java.awt.Dimension;
 
 public class Ventana extends JFrame{
     
@@ -14,7 +15,7 @@ public class Ventana extends JFrame{
     private static Ventana ventana;
     
     //atributos
-    private JPanel main, loading, game;//vistas principales
+    private JPanel main, game,notificacion;//vistas principales
     private static final long serialVersionUID = 1L;
     
     public Ventana(){
@@ -27,17 +28,19 @@ public class Ventana extends JFrame{
         interfaz.setFrame(this, 1195, 750, "Candy Crush");
     }
     
-    public void setVentanaLoading(){
-        loading = (new LoadingComponent()).getGraphicComponent();
-        getContentPane().removeAll();
-        add(loading);
-        repaint();
-    }
-
     public void setVentanaGame(){
         game = (new GameComponent()).getGraphicComponent();
         getContentPane().removeAll();
         add(game);
+        repaint();
+    }
+
+    public void setVentanaNotificacion(){
+        notificacion = (new NotificationComponent()).getGraphicComponent();
+        getContentPane().removeAll();
+        this.setSize(new Dimension(500,300));
+        this.setLocationRelativeTo(null);
+        add(notificacion);
         repaint();
     }
 

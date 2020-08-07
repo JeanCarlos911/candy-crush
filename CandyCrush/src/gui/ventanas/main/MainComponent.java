@@ -19,7 +19,6 @@ public class MainComponent implements ActionListener, Componente{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == mainTemplate.getBJugar()) {
-            Ventana.getReference().setVentanaLoading();
             Ventana.getReference().setVentanaGame();
         }
     }

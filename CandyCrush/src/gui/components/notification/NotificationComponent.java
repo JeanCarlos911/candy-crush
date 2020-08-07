@@ -1,7 +1,8 @@
-package gui.ventanas.notification;
+package gui.components.notification;
 
-import javax.swing.JComponent;
+
 import models.Componente;
+import javax.swing.JPanel;
 
 public class NotificationComponent implements Componente {
 
@@ -12,7 +13,7 @@ public class NotificationComponent implements Componente {
     }
 
     @Override
-    public JComponent getGraphicComponent() {
+    public JPanel getGraphicComponent() {
         return notificationTemplate;
     }
 

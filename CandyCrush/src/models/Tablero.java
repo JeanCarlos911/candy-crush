@@ -5,7 +5,6 @@ import controllers.TableroController;
 public class Tablero {
     //Atributos
     private Dulce matriz[][];
-    private boolean llamada;
     private TableroController tableroController;
     
     /**

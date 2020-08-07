@@ -1,6 +1,6 @@
 package ui;
 
-import models.Partida;
+//import models.Partida;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,7 +18,7 @@ public class Menu {
         
         //Menu principal--------------------------------------------------------------
         nextPage();
-        String nombre, linea = getMarginLeft() + "★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★",
+        String nombre = "", linea = getMarginLeft() + "★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★",
                   lineaVacia = getMarginLeft() + "★                                         ★";
         int opcion;
         
@@ -33,7 +33,7 @@ public class Menu {
                 nextPage();
                 System.out.printf("%s\n" + getMarginLeft() + "★       Ingrese nombre del jugador        ★\n%s\n$ ", linea, linea);
                 nombre = in.next();
-                Partida nuevaPartida = new Partida(nombre);
+                //Partida nuevaPartida = new Partida(nombre);
                 //nuevaPartida.iniciarPartida();
                 break;
             case 2:

@@ -18,11 +18,8 @@ public class MainTemplate extends JPanel{
     private GraphicService interfaz;
     private RecursoService recurso;
     
-    // Declaracion de objetos graficos
-    private JPanel pTotal;
-    
     //Declaracion de objetos decoradores
-    private Icon iBackground, iJugarOn, iJugarOff, iGuardar;
+    private Icon iBackground, iJugarOff, iGuardar;
     
     //Declaracion de componentes
     private JLabel lBackground;
@@ -47,7 +44,6 @@ public class MainTemplate extends JPanel{
         //iconos
         iBackground = new ImageIcon("../resources/main/background.png");
         iJugarOff   = new ImageIcon("../resources/main/btJugarOff.png");
-        iJugarOn    = new ImageIcon("../resources/main/btJugarOn.png");
         iGuardar    = new ImageIcon("../resources/main/btGuardar.png");
     }
     

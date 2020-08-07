@@ -8,7 +8,7 @@ public class GameComponent implements Componente{
     private GameTemplate gameTemplate;
 
     public GameComponent(){
-        gameTemplate = new GameTemplate(this);
+        gameTemplate = new GameTemplate();
     }
 
     @Override

@@ -11,7 +11,6 @@ public class Partida {
     private Jugador jugador;
     private Ventana ventana;
 
-
     /**
      * Ejemplifica variables del juego, crea ventana y almacena referencia
      */
@@ -19,6 +18,10 @@ public class Partida {
         this.jugador = Jugador.getReference(nombre);
         this.ventana = new Ventana();
         partida = this;
+    }
+
+    public Ventana getVentana(){
+        return ventana;
     }
 
     public static Partida getReferencia(){

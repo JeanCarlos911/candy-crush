@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 
 public class TableroTemplate extends JPanel{
     
-    //referencias
+    
+    private static final long serialVersionUID = 1L;
+    // referencias
     private TableroComponent tableroComponent;
     private RecursoService recurso;
     private GraphicService interfaz;

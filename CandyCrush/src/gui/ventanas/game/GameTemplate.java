@@ -11,16 +11,17 @@ import javax.swing.JPanel;
 
 public class GameTemplate extends JPanel{
 
-    private GameComponent gameComponent;
+    
+    private static final long serialVersionUID = 1L;
+
     private GraphicService interfaz;
 
     private Icon iBackground;
     private JPanel tablero, aside;
     private JLabel lBackground;
 
-    public GameTemplate(GameComponent gc){
+    public GameTemplate(){
         interfaz = GraphicService.getService();
-        gameComponent = gc;
 
         cargarRecursos();
 

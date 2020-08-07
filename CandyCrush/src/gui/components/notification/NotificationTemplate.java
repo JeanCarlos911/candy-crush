@@ -1,4 +1,4 @@
-package gui.ventanas.notification;
+package gui.components.notification;
 
 //Elementos Graficos
 import javax.swing.JPanel;

@@ -12,22 +12,20 @@ import java.awt.Graphics;
 
 public class AsideTemplate extends JPanel {
 
-    private AsideComponent asideComponent;
     private Jugador jugador;
 
     private static final long serialVersionUID = 1L;
     private JLabel image, txtMovimientosRestantes, txtVidas, txtName;
-    private final int ancho,alto;
+    private final int ANCHO,ALTO;
     private JLabel puntuacionObjetivo, puntuacionActual;
     
-    public AsideTemplate(AsideComponent ac){
+    public AsideTemplate(){
         jugador = Jugador.getReference("");
-        asideComponent = ac;
 
-        ancho = 350;
-        alto = 600;
+        ANCHO = 350;
+        ALTO = 600;
 
-        setSize(new Dimension(ancho,alto));
+        setSize(new Dimension(ANCHO,ALTO));
         setLayout(null);
         setBackground(new Color(87,119,230));
         
@@ -54,7 +52,7 @@ public class AsideTemplate extends JPanel {
         txtVidas.setLocation((this.getWidth()-200)/2,200);
         txtVidas.setForeground(Color.white);
         //--------------------------------------------------------------------------------------
-        puntuacionObjetivo = new JLabel("Puntuacion Objetivo: "+String.valueOf(1000));
+        puntuacionObjetivo = new JLabel("Puntuacion Objetivo: "+String.valueOf(3000));
         puntuacionObjetivo.setSize(new Dimension(300,25));
         puntuacionObjetivo.setLocation((this.getWidth()-this.puntuacionObjetivo.getWidth())/2,400);
         puntuacionObjetivo.setFont(new Font("Serif",Font.PLAIN,25));

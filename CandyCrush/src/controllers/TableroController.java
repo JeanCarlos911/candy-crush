@@ -14,6 +14,9 @@ public class TableroController {
         jugador = Jugador.getReference("");
     }
     
+    public Jugador getJugador(){
+        return jugador;
+    } 
     /**
      * Notacion: pP puntero principal; cH: contador Horizontal; cV: contadorVertical; i: fila; j: columna;
      * Este es un metodo algo refinado y elaborado

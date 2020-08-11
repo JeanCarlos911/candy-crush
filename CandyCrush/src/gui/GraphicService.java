@@ -24,7 +24,7 @@ public final class GraphicService {
     private GraphicService(){
     }
     
-    public Icon getIcon(String ruta, int width, int height){
+    public static  Icon getIcon(String ruta, int width, int height){
         ImageIcon iIcono = new ImageIcon(Icon.class.getResource(ruta));
         Icon icono = new ImageIcon(iIcono.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
         return icono;

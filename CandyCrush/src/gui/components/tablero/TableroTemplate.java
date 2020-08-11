@@ -19,7 +19,7 @@ public class TableroTemplate extends JPanel{
     private GraphicService interfaz;
     
     //objetos decoradores
-    private Icon iBackground, dulce1, dulce2, dulce3, dulce4, dulce5;
+    private Icon iBackground, dulce1, dulce2, dulce3, dulce4, dulce5,dulce6;
     
     //objetos graficos
     private JButton[][] dulce;
@@ -85,6 +85,9 @@ public class TableroTemplate extends JPanel{
                     case 5:
                         icono = dulce5;
                         break;
+                    case 6:
+                        icono = dulce6;
+                        break;
                     default:
                         icono = null;
                         break;
@@ -102,6 +105,8 @@ public class TableroTemplate extends JPanel{
         dulce3 = new ImageIcon("../resources/game/tablero/Dulce3.png");
         dulce4 = new ImageIcon("../resources/game/tablero/Dulce4.png");
         dulce5 = new ImageIcon("../resources/game/tablero/Dulce5.png");
+        dulce6 = new ImageIcon("../resources/game/tablero/6.jpeg");
+
     }
 
     private void crearBotonesConDulces() {
@@ -126,6 +131,9 @@ public class TableroTemplate extends JPanel{
                         break;
                     case 5:
                         icono = dulce5;
+                        break;
+                    case 6:
+                        icono = dulce6;
                         break;
                     default:
                         icono = null;

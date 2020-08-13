@@ -16,10 +16,10 @@ Esta versión añade:
 
 ### Actual 🍬 🍬 🍬
 Esta version emula el Candy Crush con interfaz gráfica
-Esta versión añade
-🍬 Un dulce.
-🍬 Interfaz.
-🍬 Algunas animaciones.
+Esta versión añade:  
+🍬 Un dulce.  
+🍬 Interfaz.  
+🍬 Algunas animaciones.  
 
 ## Desarrollado por:
   - Sergio David Paez Suarez - 20191020167.

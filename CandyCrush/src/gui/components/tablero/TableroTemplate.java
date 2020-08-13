@@ -105,7 +105,7 @@ public class TableroTemplate extends JPanel{
         dulce3 = new ImageIcon("../resources/game/tablero/Dulce3.png");
         dulce4 = new ImageIcon("../resources/game/tablero/Dulce4.png");
         dulce5 = new ImageIcon("../resources/game/tablero/Dulce5.png");
-        dulce6 = new ImageIcon("../resources/game/tablero/6.jpeg");
+        dulce6 = new ImageIcon("../resources/game/tablero/Dulce6.png");
 
     }
 

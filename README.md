@@ -1,4 +1,5 @@
 # Candy Crush
+![](demostracion.png)
 
 ## Descripción
 Consiste en simular el conocido juego de ***Candy Crush***.
@@ -13,8 +14,14 @@ Esta versión añade:
 🍬 Sistema de vidas.  
 🍬 Interfaz por consola.  
 
+### Actual 🍬 🍬 🍬
+Esta version emula el Candy Crush con interfaz gráfica
+Esta versión añade
+🍬 Un dulce.
+🍬 Interfaz.
+🍬 Algunas animaciones.
 
 ## Desarrollado por:
-  - Jean Carlos Santoya Cabrera - 20191020156
-  - Sergio David Paez Suarez - 20191020167
-  - Samuel Andrés Romero Bueno - 20191020127
+  - Sergio David Paez Suarez - 20191020167.
+  - Samuel Andrés Romero Bueno - 20191020127.
+  - Jean Carlos Santoya Cabrera - 20191020156.
